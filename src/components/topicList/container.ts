@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {TopicList} from './TopicList';
+import {TopicList} from './topicList';
 
 const mapState = (state: AppState) => ({
   topics: state.global.topics,
