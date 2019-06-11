@@ -17,7 +17,12 @@
     "allowSyntheticDefaultImports": false,
     "esModuleInterop": true,
     "outDir": "dist",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ]
   },
   "include": [
     "./src/**/*"
