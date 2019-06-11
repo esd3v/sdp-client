@@ -1,7 +1,6 @@
 import * as React from 'react';
 import dayjs from 'dayjs/dayjs.min';
-import tippy from 'tippy.js/dist/tippy.standalone.min';
-require('tippy.js/dist/tippy.css');
+import tippy from 'tippy.js';
 import {Props} from './types';
 // import iconLock from 'assets/icons/lock.svg';
 import * as styles from './styles';
@@ -24,13 +23,13 @@ export class TopicItem extends React.Component<Props> {
       duration: 0,
       followCursor: true,
       multiple: false,
-      placement: 'bottom-start',
+      placement: 'auto' as 'auto',
     };
 
-    tippy(this.refTitle.current, options);
-    tippy(this.refIconLock.current, options);
-    tippy(this.refIconPin.current, options);
-    tippy(this.refIconCheck.current, options);
+    tippy(this.refTitle.current as Element, options);
+    tippy(this.refIconLock.current as Element, options);
+    tippy(this.refIconPin.current as Element, options);
+    tippy(this.refIconCheck.current as Element, options);
   }
 
   public render() {

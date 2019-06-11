@@ -7,8 +7,10 @@ require('./styles/global');
 require('./styles/fonts');
 
 render(
-  <Provider store={store}>
-    <Main/>
-  </Provider>,
+  (
+    <Provider store={store}>
+      <Main/>
+    </Provider>
+  ),
   document.getElementById('root'),
 );
