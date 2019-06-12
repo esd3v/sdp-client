@@ -1,10 +1,11 @@
 import {css} from 'emotion';
 import {lighten} from 'polished';
 import * as variables from 'styles/variables';
+import {mq} from 'styles/mediaQueries';
 
 export const topicItem = css`
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   padding: 12px;
   background-color: #fff;
   &:hover {
@@ -15,18 +16,23 @@ export const topicItem = css`
   }
 `;
 
-export const left = css`
-  margin-right: 8px;
+export const top = css`
   overflow: hidden;
   white-space: nowrap;
 `;
 
-export const right = css`
+export const bottom = css`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-shrink: 0;
   margin-left: auto;
   font-size: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  ${mq.sm} {
+    flex-wrap: initial;
+    justify-content: initial;
+  }
 `;
 
 export const header = css`
@@ -46,6 +52,11 @@ export const title = css`
 export const author = css`
   height: 18px;
   font-size: 14px;
+  margin-right: auto;
+  flex-basis: 100%;
+  ${mq.sm} {
+    flex-basis: initial;
+  }
 `;
 
 export const icon = css`

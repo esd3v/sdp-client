@@ -37,7 +37,7 @@ export class TopicItem extends React.Component<Props> {
 
     return (
       <div className={styles.topicItem}>
-        <div className={styles.left}>
+        <div className={styles.top}>
           <div className={styles.header}>
             {topic.locked &&
               <IconLock
@@ -71,9 +71,9 @@ export class TopicItem extends React.Component<Props> {
             >{topic.title}
             </a>
           </div>
-          <div className={styles.author}>{topic.author}</div>
         </div>
-        <div className={styles.right}>
+        <div className={styles.bottom}>
+          <div className={styles.author}>{topic.author}</div>
           <div>{formatTime(topic.timestamp)}</div>
           <IconChat className={`${styles.icon} ${styles.iconChat}`}/>
           <div>{topic.replyCount}</div>
