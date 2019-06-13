@@ -41,14 +41,14 @@
         "align": false,
         "callable-types": false,
         "class-name": false,
-        // tslint-react
+        "one-variable-per-declaration": true,
         "jsx-curly-spacing": false,
         "jsx-alignment": true,
         "jsx-no-bind": true,
         "jsx-key": true,
         "jsx-no-lambda": true,
+        "jsx-wrap-multiline": false,
         "jsx-no-multiline-js": false,
-        // tslint-eslint-rules
         "object-curly-spacing": [
           true,
           "never"
