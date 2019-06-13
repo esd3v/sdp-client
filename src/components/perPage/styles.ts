@@ -8,4 +8,7 @@ export const perPage = css`
   & .label {
     margin-right: 8px;
   }
+  & select {
+    padding: 3px 8px;
+  }
 `;
