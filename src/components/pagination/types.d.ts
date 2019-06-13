@@ -3,4 +3,5 @@ export interface Props {
   url: AppState['global']['url'];
   perPage: AppState['global']['perPage'];
   pageTotal: AppState['global']['pageTotal'];
+  currentPage: AppState['global']['currentPage'];
 }

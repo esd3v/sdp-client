@@ -43,5 +43,16 @@ export const button = css`
   ${pageLink};
   width: auto;
   height: auto;
+  color: initial;
+  font-size: 16px;
   padding: 6px 8px;
+`;
+
+export const mobileButton = css`
+  padding: 6px 8px;
+`;
+
+export const select = css`
+  width: 50%;
+  margin: 0 16px;
 `;

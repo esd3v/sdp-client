@@ -6,6 +6,7 @@ const mapState = (state: AppState) => ({
   url: state.global.url,
   perPage: state.global.perPage,
   pageTotal: state.global.pageTotal,
+  currentPage: state.global.currentPage,
 });
 
 const mapDispatch = {
