@@ -48,7 +48,7 @@ module.exports = {
           {
             loader: 'tslint-loader',
             query: {
-              failOnHint: true,
+              failOnHint: false,
             },
           },
         ],
