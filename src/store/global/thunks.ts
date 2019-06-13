@@ -24,6 +24,7 @@ export const loadTopics: Thunks['loadTopics'] = ({url, page, perPage}) =>
         dispatch(actions.setURL(url));
         dispatch(actions.setTopics(topics));
         dispatch(actions.setPageTotal(pageTotal));
+        dispatch(actions.setCurrentPage(page));
         dispatch(actions.setLoading(false));
       } catch {
         dispatch(actions.setLoading(false));

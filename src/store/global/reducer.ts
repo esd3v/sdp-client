@@ -25,6 +25,10 @@ const changers: AppStateChangers<AppState['global']> = {
     (payload: Arg1<typeof actions['setPageTotal']>) => ({
       pageTotal: payload,
     }),
+  [types.SET_CURRENTPAGE]:
+    (payload: Arg1<typeof actions['setCurrentPage']>) => ({
+      currentPage: payload,
+    }),
 };
 
 export const reducer = createReducer(initialState, changers);

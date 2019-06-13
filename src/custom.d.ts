@@ -4,6 +4,7 @@ interface AppState {
     topics: Topic[];
     perPage: number;
     pageTotal: number;
+    currentPage: number;
     loading: boolean;
   };
 }
