@@ -4,7 +4,7 @@ import {Props} from './types';
 import {Spinner} from './spinner';
 import * as variables from 'styles/variables';
 
-const size = '64px';
+const circleSize = '11px';
 const padding = '16px';
 
 const basic = `
@@ -21,12 +21,30 @@ const full = `
   background: rgba(255,255,255,0.7);
 `;
 
-const animation = keyframes`
+const animation1 = keyframes`
   0% {
-    transform: rotate(0deg);
+    transform: scale(0);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
+  }
+`;
+
+const animation2 = keyframes`
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+`;
+
+const animation3 = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
   }
 `;
 
@@ -35,21 +53,37 @@ export const SpinnerStyled = styled(Spinner)((props: Props) => `
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 96px;
   ${props.full ? full : basic};
   & .spinner {
-    display: inline-block;
-    width: ${size};
-    height: ${size};
-    &:after {
-      content: " ";
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 1px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 55px;
+    height: ${circleSize};
+    & div {
+      position: absolute;
+      width: ${circleSize};
+      height: ${circleSize};
       border-radius: 50%;
-      border: 5px solid ${variables.dodgerBlue};
-      border-color: ${variables.dodgerBlue} transparent ${variables.dodgerBlue} transparent;
-      animation: ${animation} 1.2s linear infinite;
+      background-color: ${variables.dodgerBlue};
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+      &:nth-of-type(1) {
+        left: 6px;
+        animation: ${animation1} 0.6s infinite;
+      }
+      &:nth-of-type(2) {
+        left: 6px;
+        animation: ${animation2} 0.6s infinite;
+      }
+      &:nth-of-type(3) {
+        left: 26px;
+        animation: ${animation2} 0.6s infinite;
+      }
+      &:nth-of-type(4) {
+        left: 45px;
+        animation: ${animation3} 0.6s infinite;
+      }
     },
   }
 `);

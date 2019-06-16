@@ -3,6 +3,11 @@ import {Props} from './types';
 
 export const Spinner: React.SFC<Props> = ({className}) => (
   <div className={className}>
-    <div className="spinner"/>
+    <div className="spinner">
+      <div/>
+      <div/>
+      <div/>
+      <div/>
+    </div>
   </div>
 );
