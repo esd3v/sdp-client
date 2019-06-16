@@ -1,5 +1,5 @@
 export const state: AppState['global'] = {
-  url: '',
+  appID: 0,
   topics: [],
   perPage: 15,
   pageTotal: 0,

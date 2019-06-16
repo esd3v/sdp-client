@@ -1,6 +1,6 @@
 interface AppState {
   global: {
-    url: string;
+    appID: number;
     topics: Topic[];
     perPage: number;
     pageTotal: number;
@@ -16,7 +16,7 @@ interface Thunks {
 
 interface HTTPParams {
   loadTopics: {
-    url: string;
+    appID: number;
     page: number;
     perPage: number;
   };

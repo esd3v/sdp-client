@@ -2,10 +2,10 @@ import * as actions from 'store/global/actions';
 
 export interface Props {
   perPage: AppState['global']['perPage'];
-  setURL: typeof actions['setURL'];
+  setAppID: typeof actions['setAppID'];
   loadTopics: Thunks['loadTopics'];
 }
 
 export interface State {
-  url: string;
+  appID: number;
 }

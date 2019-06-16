@@ -8,7 +8,7 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = {
-  setURL: actions.setURL,
+  setAppID: actions.setAppID,
   loadTopics: thunks.loadTopics,
 };
 

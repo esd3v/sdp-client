@@ -1,4 +1,4 @@
 export interface Props {
-  value: string;
+  value: number;
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }

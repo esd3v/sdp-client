@@ -6,23 +6,22 @@ import {Props, State} from './types';
 
 export class SearchBar extends React.Component<Props, State> {
   public state = {
-    url: 'https://steamcommunity.com/app/323190/discussions/1/',
+    appID: 323190,
   };
 
   public componentDidMount() {
-    this.props.setURL(this.state.url);
+    this.props.setAppID(this.state.appID);
   }
 
   public handleChange = e => {
     this.setState({
-      url: e.target.value,
+      appID: parseInt(e.target.value, 10),
     });
   }
 
   public handleClick = async () => {
-    const url = this.state.url;
     this.props.loadTopics({
-      url,
+      appID: this.state.appID,
       page: 1,
       perPage: this.props.perPage,
     });
@@ -33,7 +32,7 @@ export class SearchBar extends React.Component<Props, State> {
       <div className={styles.searchBar}>
         <SearchInput
           onChange={this.handleChange}
-          value={this.state.url}
+          value={this.state.appID}
         />
         <Button onClick={this.handleClick}>Parse</Button>
       </div>

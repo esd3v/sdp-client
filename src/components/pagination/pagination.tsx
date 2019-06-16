@@ -85,7 +85,7 @@ export class Pagination extends React.Component<Props> {
 
   private loadTopics = (page: number) =>
     this.props.loadTopics({
-      url: this.props.url,
+      appID: this.props.appID,
       page,
       perPage: this.props.perPage,
     })

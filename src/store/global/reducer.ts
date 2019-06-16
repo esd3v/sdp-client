@@ -5,9 +5,9 @@ import {createReducer} from 'services/reduxHelpers';
 import {state as initialState} from './state';
 
 const changers: AppStateChangers<AppState['global']> = {
-  [types.SET_URL]:
-    (payload: Arg1<typeof actions['setURL']>) => ({
-      url: payload,
+  [types.SET_APPID]:
+    (payload: Arg1<typeof actions['setAppID']>) => ({
+      appID: payload,
     }),
   [types.SET_LOADING]:
     (payload: Arg1<typeof actions['setLoading']>) => ({

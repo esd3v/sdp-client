@@ -1,8 +1,8 @@
 import * as types from './types';
 import {createAction} from 'services/reduxHelpers';
 
-export const setURL = (payload: string) =>
-  createAction(types.SET_URL, payload);
+export const setAppID = (payload: number) =>
+  createAction(types.SET_APPID, payload);
 
 export const setLoading = (payload: boolean) =>
   createAction(types.SET_LOADING, payload);

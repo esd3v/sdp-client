@@ -1,6 +1,6 @@
 export interface Props {
   loadTopics: Thunks['loadTopics'];
-  url: AppState['global']['url'];
+  appID: AppState['global']['appID'];
   perPage: AppState['global']['perPage'];
   pageTotal: AppState['global']['pageTotal'];
   currentPage: AppState['global']['currentPage'];
