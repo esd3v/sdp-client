@@ -51,10 +51,14 @@ const animation3 = keyframes`
 export const SpinnerStyled = styled(Spinner)((props: Props) => `
   padding: ${padding};
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 96px;
   ${props.full ? full : basic};
+  & .status {
+    margin-bottom: ${props.status ? '16px' : 0};
+  }
   & .spinner {
     display: flex;
     align-items: center;
