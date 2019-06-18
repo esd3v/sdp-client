@@ -6,7 +6,7 @@ import {Props, State} from './types';
 
 export class SearchBar extends React.Component<Props, State> {
   public state = {
-    appID: 323190,
+    appID: 629760,
   };
 
   public componentDidMount() {
@@ -19,7 +19,8 @@ export class SearchBar extends React.Component<Props, State> {
     });
   }
 
-  public handleClick = async () => {
+  public handleClick = async e => {
+    e.preventDefault();
     this.props.loadTopics({
       appID: this.state.appID,
       page: 1,
@@ -29,13 +30,13 @@ export class SearchBar extends React.Component<Props, State> {
 
   public render() {
     return (
-      <div className={styles.searchBar}>
+      <form className={styles.searchBar}>
         <SearchInput
           onChange={this.handleChange}
           value={this.state.appID}
         />
-        <Button onClick={this.handleClick}>Parse</Button>
-      </div>
+        <Button type="submit" onClick={this.handleClick}>Parse</Button>
+      </form>
     );
   }
 }
