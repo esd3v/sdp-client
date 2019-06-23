@@ -7,7 +7,7 @@ export const setAppID = (payload: number) =>
 export const setLoading = (payload: boolean) =>
   createAction(types.SET_LOADING, payload);
 
-export const setPerPage = (payload: number) =>
+export const setPerPage = (payload: PerPage) =>
   createAction(types.SET_PERPAGE, payload);
 
 export const setTopics = (payload: Topic[]) =>

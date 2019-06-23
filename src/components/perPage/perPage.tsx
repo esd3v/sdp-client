@@ -4,7 +4,11 @@ import {Props} from './types';
 import * as styles from './styles';
 
 export const PerPage: React.SFC<Props> = props => {
-  const onChange = e => props.switchPerPage(parseInt(e.target.value, 10));
+  const onChange = e => {
+    const value = parseInt(e.target.value, 10) as PerPage;
+    props.switchPerPage(value);
+  };
+
   return (
     <div className={styles.perPage}>
       <div className="label">Per page:</div>

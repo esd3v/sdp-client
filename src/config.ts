@@ -3,4 +3,4 @@ export const API_ENDPOINT = `http://localhost:${API_PORT}`;
 export const API_WS_PORT = 8081;
 export const API_WS_ENDPOINT = `ws://localhost:${API_WS_PORT}`;
 export const API_TIMEOUT = 1.5 * 60 * 1000;
-export const PERPAGE = [15, 30, 50];
+export const PERPAGE: PerPage[] = [15, 30, 50];

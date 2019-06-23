@@ -2,7 +2,7 @@ interface AppState {
   global: {
     appID: number;
     topics: Topic[];
-    perPage: number;
+    perPage: PerPage;
     pageTotal: number;
     currentPage: number;
     loading: boolean;
@@ -10,7 +10,7 @@ interface AppState {
 }
 
 interface Thunks {
-  switchPerPage: Thunk<number>;
+  switchPerPage: Thunk<PerPage>;
   loadTopics: Thunk<HTTPParams['loadTopics']>;
 }
 
@@ -18,7 +18,7 @@ interface HTTPParams {
   loadTopics: {
     appID: number;
     page: number;
-    perPage: number;
+    perPage: PerPage;
   };
 }
 
@@ -28,6 +28,8 @@ interface HTTPRequest {
     pageTotal: number;
   }>;
 }
+
+type PerPage = 15 | 30 | 50;
 
 interface Topic {
   pinned: boolean;
