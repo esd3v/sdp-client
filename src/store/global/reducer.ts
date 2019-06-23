@@ -1,4 +1,3 @@
-import {Arg1} from 'tsargs';
 import * as types from './types';
 import * as actions from './actions';
 import {createReducer} from 'services/reduxHelpers';
@@ -6,27 +5,27 @@ import {state as initialState} from './state';
 
 const changers: AppStateChangers<AppState['global']> = {
   [types.SET_APPID]:
-    (payload: Arg1<typeof actions['setAppID']>) => ({
+    (payload: Parameters<typeof actions['setAppID']>[0]) => ({
       appID: payload,
     }),
   [types.SET_LOADING]:
-    (payload: Arg1<typeof actions['setLoading']>) => ({
+    (payload: Parameters<typeof actions['setLoading']>[0]) => ({
       loading: payload,
     }),
   [types.SET_PERPAGE]:
-    (payload: Arg1<typeof actions['setPerPage']>) => ({
+    (payload: Parameters<typeof actions['setPerPage']>[0]) => ({
       perPage: payload,
     }),
   [types.SET_TOPICS]:
-    (payload: Arg1<typeof actions['setTopics']>) => ({
+    (payload: Parameters<typeof actions['setTopics']>[0]) => ({
       topics: payload,
   }),
   [types.SET_PAGETOTAL]:
-    (payload: Arg1<typeof actions['setPageTotal']>) => ({
+    (payload: Parameters<typeof actions['setPageTotal']>[0]) => ({
       pageTotal: payload,
     }),
   [types.SET_CURRENTPAGE]:
-    (payload: Arg1<typeof actions['setCurrentPage']>) => ({
+    (payload: Parameters<typeof actions['setCurrentPage']>[0]) => ({
       currentPage: payload,
     }),
 };
