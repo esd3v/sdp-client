@@ -1,11 +1,16 @@
+import {RouteComponentProps} from 'react-router-dom';
 import * as actions from 'store/global/actions';
 
-export interface Props {
+interface MatchParams {
+  appID: string;
+}
+
+export interface Props extends RouteComponentProps<MatchParams> {
   perPage: AppState['global']['perPage'];
-  setAppID: typeof actions['setAppID'];
   loadTopics: Thunks['loadTopics'];
 }
 
 export interface State {
-  appID: number;
+  value: string;
+  redirect: boolean;
 }

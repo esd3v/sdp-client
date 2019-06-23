@@ -1,16 +1,13 @@
 interface AppState {
   global: {
-    appID: number;
     topics: Topic[];
     perPage: PerPage;
     pageTotal: number;
-    currentPage: number;
     loading: boolean;
   };
 }
 
 interface Thunks {
-  switchPerPage: Thunk<PerPage>;
   loadTopics: Thunk<HTTPParams['loadTopics']>;
 }
 

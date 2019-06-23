@@ -1,5 +1,5 @@
 import * as thunks from 'store/global/thunks';
-import * as actions from 'store/global/actions';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {SearchBar} from './searchBar';
 
@@ -8,8 +8,7 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = {
-  setAppID: actions.setAppID,
   loadTopics: thunks.loadTopics,
 };
 
-export const SearchBarContainer = connect(mapState, mapDispatch)(SearchBar);
+export const SearchBarContainer = withRouter(connect(mapState, mapDispatch)(SearchBar));

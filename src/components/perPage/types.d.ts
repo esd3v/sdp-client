@@ -1,3 +1,5 @@
+import * as actions from 'store/global/actions';
+
 export interface Props {
-  switchPerPage: Thunks['switchPerPage'];
+  setPerPage: typeof actions['setPerPage'];
 }

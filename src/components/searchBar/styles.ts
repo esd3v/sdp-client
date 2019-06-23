@@ -10,6 +10,10 @@ export const searchBar = css`
     margin-bottom: 16px;
     box-shadow: ${variables.shadow};
   }
+  input {
+    padding: 12px 8px;
+    width: 100%;
+  }
   button {
     min-height: 36px;
   }

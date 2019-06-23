@@ -6,7 +6,8 @@ import * as styles from './styles';
 export const PerPage: React.SFC<Props> = props => {
   const onChange = e => {
     const value = parseInt(e.target.value, 10) as PerPage;
-    props.switchPerPage(value);
+
+    props.setPerPage(value);
   };
 
   return (

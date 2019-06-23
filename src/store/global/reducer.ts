@@ -4,10 +4,6 @@ import {createReducer} from 'services/reduxHelpers';
 import {state as initialState} from './state';
 
 const changers: AppStateChangers<AppState['global']> = {
-  [types.SET_APPID]:
-    (payload: Parameters<typeof actions['setAppID']>[0]) => ({
-      appID: payload,
-    }),
   [types.SET_LOADING]:
     (payload: Parameters<typeof actions['setLoading']>[0]) => ({
       loading: payload,
@@ -23,10 +19,6 @@ const changers: AppStateChangers<AppState['global']> = {
   [types.SET_PAGETOTAL]:
     (payload: Parameters<typeof actions['setPageTotal']>[0]) => ({
       pageTotal: payload,
-    }),
-  [types.SET_CURRENTPAGE]:
-    (payload: Parameters<typeof actions['setCurrentPage']>[0]) => ({
-      currentPage: payload,
     }),
 };
 

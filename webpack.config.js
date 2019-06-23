@@ -13,6 +13,7 @@ module.exports = {
   target: 'web',
   output: {
     path: DIR_BUILD,
+    publicPath: '/',
     filename: '[name].[chunkhash].js',
   },
   resolve: {

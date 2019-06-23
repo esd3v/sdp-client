@@ -1,35 +1,15 @@
 import * as React from 'react';
 import ReactPaginate from 'react-paginate';
-import {Props} from './types';
+import {Redirect} from 'react-router-dom';
+import {Props, State} from './types';
 import * as styles from './styles';
 import {Button} from 'components/button';
 import {Responsive} from 'components/responsive';
 
-export class Pagination extends React.Component<Props> {
-  public isFistPage = () =>
-    this.props.currentPage === 1
-
-  public isLastPage = () =>
-    this.props.currentPage === this.props.pageTotal
-
-  public getNextPage = () =>
-    !this.isLastPage() ?
-      this.props.currentPage + 1 :
-        this.props.currentPage
-
-  public getPrevPage = () =>
-    !this.isFistPage() ?
-      this.props.currentPage - 1 :
-      this.props.currentPage
-
-  public switchPageDesktop = ({selected}) =>
-    this.loadTopics(selected + 1)
-
-  public switchPageMobileButton = (isNext: boolean) =>
-    this.loadTopics(isNext ? this.getNextPage() : this.getPrevPage())
-
-  public switchPageMobileSelect = e =>
-    this.loadTopics(parseInt(e.target.value, 10))
+export class Pagination extends React.Component<Props, State> {
+  public state = {
+    selected: parseInt(this.props.match.params.page, 10) || 1,
+  };
 
   public render() {
     return (
@@ -44,7 +24,7 @@ export class Pagination extends React.Component<Props> {
           </Button>
           <select
             className={styles.select}
-            value={this.props.currentPage}
+            value={this.getCurrentPage()}
             onChange={this.switchPageMobileSelect}
           >
             {
@@ -67,7 +47,7 @@ export class Pagination extends React.Component<Props> {
       <Responsive min="sm">
         <ReactPaginate
           pageCount={this.props.pageTotal}
-          initialPage={!this.props.currentPage ? 0 : (this.props.currentPage - 1)}
+          initialPage={!this.getCurrentPage() ? 0 : (this.getCurrentPage() - 1)}
           disableInitialCallback={true}
           containerClassName={styles.container}
           nextClassName={styles.button}
@@ -79,14 +59,48 @@ export class Pagination extends React.Component<Props> {
           previousLabel="Prev"
         />
       </Responsive>
+      {
+        <Redirect to={`/app/${this.props.match.params.appID}/page/${this.state.selected}`}/>
+      }
       </>
     );
   }
 
-  private loadTopics = (page: number) =>
-    this.props.loadTopics({
-      appID: this.props.appID,
-      page,
-      perPage: this.props.perPage,
-    })
+  private getCurrentPage() {
+    return parseInt(this.props.match.params.page, 10);
+  }
+
+  private isFistPage = () =>
+    this.getCurrentPage() === 1
+
+  private isLastPage = () =>
+    this.getCurrentPage() === this.props.pageTotal
+
+  private getNextPage = () =>
+    !this.isLastPage() ?
+      this.getCurrentPage() + 1 :
+        this.getCurrentPage()
+
+  private getPrevPage = () =>
+    !this.isFistPage() ?
+      this.getCurrentPage() - 1 :
+      this.getCurrentPage()
+
+  private switchPageDesktop = ({selected}) =>
+    this.setState(() => ({
+      selected: selected + 1,
+    }))
+
+  private switchPageMobileButton = (isNext: boolean) =>
+    this.setState(() => ({
+      selected: isNext ? this.getNextPage() : this.getPrevPage(),
+    }))
+
+  private switchPageMobileSelect = e => {
+    const value = e.target.value;
+
+    this.setState(() => ({
+      selected: parseInt(value, 10),
+    }));
+  }
 }
