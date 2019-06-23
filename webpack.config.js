@@ -38,12 +38,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
-            options: {
-              reportFiles: [
-                `${DIR_SRC}/**/*.{ts,tsx}`,
-              ],
-            },
+            loader: 'ts-loader',
           },
           {
             loader: 'tslint-loader',
