@@ -1,9 +1,10 @@
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import {createContainer} from 'services/reduxHelpers';
 import {Pagination} from './pagination';
 
-const mapState = (state: AppState) => ({
-  pageTotal: state.global.pageTotal,
+export const PaginationContainer = createContainer({
+  mapState: state => ({
+    pageTotal: state.global.pageTotal,
+  }),
+  component: Pagination,
+  withRouter: true,
 });
-
-export const PaginationContainer = withRouter(connect(mapState)(Pagination));

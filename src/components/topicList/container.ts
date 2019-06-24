@@ -1,9 +1,10 @@
-import {connect} from 'react-redux';
+import {createContainer} from 'services/reduxHelpers';
 import {TopicList} from './topicList';
 
-const mapState = (state: AppState) => ({
-  topics: state.global.topics,
-  loading: state.global.loading,
+export const TopicListContainer = createContainer({
+  mapState: state => ({
+    topics: state.global.topics,
+    loading: state.global.loading,
+  }),
+  component: TopicList,
 });
-
-export const TopicListContainer = connect(mapState)(TopicList);

@@ -1,14 +1,13 @@
-import * as thunks from 'store/global/thunks';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {createContainer} from 'services/reduxHelpers';
 import {SearchBar} from './searchBar';
 
-const mapState = (state: AppState) => ({
-  perPage: state.global.perPage,
+export const SearchBarContainer = createContainer({
+  mapState: state => ({
+    perPage: state.global.perPage,
+  }),
+  mapDispatch: {
+    asyncActions: ['loadTopics'],
+  },
+  component: SearchBar,
+  withRouter: true,
 });
-
-const mapDispatch = {
-  loadTopics: thunks.loadTopics,
-};
-
-export const SearchBarContainer = withRouter(connect(mapState, mapDispatch)(SearchBar));

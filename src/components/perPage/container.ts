@@ -1,9 +1,9 @@
-import * as actions from 'store/global/actions';
-import {connect} from 'react-redux';
+import {createContainer} from 'services/reduxHelpers';
 import {PerPage} from './perPage';
 
-const mapDispatch = {
-  setPerPage: actions.setPerPage,
-};
-
-export const PerPageContainer = connect(null, mapDispatch)(PerPage);
+export const PerPageContainer = createContainer({
+  mapDispatch: {
+    actions: ['setPerPage'],
+  },
+  component: PerPage,
+});
