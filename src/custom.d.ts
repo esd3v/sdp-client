@@ -1,6 +1,7 @@
-interface AppState {
+interface AppState extends ReduxState {
   global: {
     topics: Topic[];
+    topicTotal: number;
     perPage: PerPage;
     pageTotal: number;
     loading: boolean;
@@ -22,6 +23,7 @@ interface HTTPParams {
 interface HTTPRequest {
   loadTopics: HTTPGet<HTTPParams['loadTopics'], {
     topics: Topic[];
+    topicTotal: number;
     pageTotal: number;
   }>;
 }

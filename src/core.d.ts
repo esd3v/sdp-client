@@ -3,6 +3,12 @@ declare module '*.svg' {
   export default content;
 }
 
+interface ReduxState {
+  [key: string]: {
+    [key in string]: {};
+  };
+}
+
 interface Action {
   type: string;
 }

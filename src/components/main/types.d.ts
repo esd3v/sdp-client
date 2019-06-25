@@ -8,9 +8,9 @@ interface MatchParams {
 export interface Props extends RouteComponentProps<MatchParams> {
   loadTopics: Thunks['loadTopics'];
   topics: AppState['global']['topics'];
+  topicTotal: AppState['global']['topicTotal'];
   loading: AppState['global']['loading'];
   pageTotal: AppState['global']['pageTotal'];
-  appID: AppState['global']['appID'];
   perPage: AppState['global']['perPage'];
 }
 

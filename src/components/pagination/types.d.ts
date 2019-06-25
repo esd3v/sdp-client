@@ -8,7 +8,6 @@ interface MatchParams {
 
 export interface Props extends RouteComponentProps<MatchParams> {
   pageTotal: AppState['global']['pageTotal'];
-  pageCount: number;
 }
 
 export interface State {

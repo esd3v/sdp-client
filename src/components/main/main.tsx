@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as config from '../../config';
 import * as styles from './styles';
 import {Props, State} from './types';
+import {calculatePageCount} from 'misc';
 import {Spinner} from 'components/spinner';
 import {PerPage} from 'components/perPage';
 import {SearchBar} from 'components/searchBar';
@@ -16,8 +17,6 @@ export class Main extends React.Component<Props, State> {
   };
 
   public componentDidMount() {
-    const appID = parseInt(this.props.match.params.appID, 10);
-    const page = parseInt(this.props.match.params.page, 10);
     const socket = new WebSocket(config.API_WS_ENDPOINT);
 
     socket.onmessage = event =>
@@ -25,28 +24,44 @@ export class Main extends React.Component<Props, State> {
         status: event.data,
       }));
 
-    if (appID) {
-      this.props.loadTopics({
-        appID,
-        page: page || 1,
-        perPage: this.props.perPage,
-      });
+    // Load data on first load, even with no page selected
+    if (this.getAppID()) {
+      this.loadTopics(this.getCurrentPage() || 1);
     }
   }
 
   public componentDidUpdate(prevProps: Props) {
-    const appID = parseInt(this.props.match.params.appID, 10);
-    const currentPage = parseInt(this.props.match.params.page, 10);
-    const prevPage = parseInt(prevProps.match.params.page, 10);
-    const pageHasChanged = currentPage !== prevPage;
-    const perPageHasChanged = prevProps.perPage !== this.props.perPage;
+    const appID = this.getAppID();
+    const selectedPage = this.getCurrentPage();
 
-    if (pageHasChanged || perPageHasChanged) {
-      this.props.loadTopics({
-        appID,
-        page: currentPage,
-        perPage: this.props.perPage,
-      });
+    // If topics has (just) been loaded
+    if (this.props.topics.length) {
+      // Check if first run
+      if (!selectedPage) {
+        this.props.history.replace(`/app/${appID}/page/1`);
+      } else {
+        const prevPage = parseInt(prevProps.match.params.page, 10);
+        const pageHasChanged = selectedPage !== prevPage;
+        const perPageHasChanged = prevProps.perPage !== this.props.perPage;
+
+        if (pageHasChanged) {
+          this.loadTopics(selectedPage);
+        } else if (perPageHasChanged) {
+          // e.g. on the last page if perPage is 15, then switch to perPage 50
+          const predictedPageCount = calculatePageCount({
+            perPage: this.props.perPage,
+            total: this.props.topicTotal,
+          });
+          const isSelectedPageGreater = selectedPage > predictedPageCount;
+
+          if (isSelectedPageGreater) {
+            this.props.history.replace(`/app/${appID}/page/${predictedPageCount}`);
+            this.loadTopics(isSelectedPageGreater ? predictedPageCount : selectedPage);
+          } else {
+            this.loadTopics(selectedPage);
+          }
+        }
+      }
     }
   }
 
@@ -70,4 +85,17 @@ export class Main extends React.Component<Props, State> {
       </div>
     );
   }
+
+  private getAppID = () =>
+    parseInt(this.props.match.params.appID, 10)
+
+  private getCurrentPage = () =>
+    parseInt(this.props.match.params.page, 10)
+
+  private loadTopics = (page: number) =>
+    this.props.loadTopics({
+      appID: this.getAppID(),
+      page,
+      perPage: this.props.perPage,
+    })
 }
