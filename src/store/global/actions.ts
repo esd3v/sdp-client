@@ -12,3 +12,6 @@ export const setTopics = (payload: Topic[]) =>
 
 export const setPageTotal = (payload: number) =>
   createAction(types.SET_PAGETOTAL, payload);
+
+export const setTopicTotal = (payload: number) =>
+  createAction(types.SET_TOPICTOTAL, payload);

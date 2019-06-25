@@ -20,6 +20,10 @@ const changers: AppStateChangers<AppState['global']> = {
     (payload: Parameters<typeof actions['setPageTotal']>[0]) => ({
       pageTotal: payload,
     }),
+  [types.SET_TOPICTOTAL]:
+    (payload: Parameters<typeof actions['setTopicTotal']>[0]) => ({
+      topicTotal: payload,
+    }),
 };
 
 export const reducer = createReducer(initialState, changers);
