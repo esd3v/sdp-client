@@ -1,12 +1,12 @@
 import thunk from 'redux-thunk';
-import {reducer as globalReducer} from './global/reducer';
 import {devToolsEnhancer} from 'redux-devtools-extension';
 import {
   createStore,
   applyMiddleware,
   compose,
-  combineReducers,
 } from 'redux';
+import {reducer as globalReducer} from './global/reducer';
+import {combineReducers} from 'services/reduxHelpers';
 
 const rootReducer = combineReducers({
   global: globalReducer,

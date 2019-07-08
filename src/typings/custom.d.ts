@@ -1,13 +1,3 @@
-interface AppState extends ReduxState {
-  global: {
-    topics: Topic[];
-    topicTotal: number;
-    perPage: PerPage;
-    pageTotal: number;
-    loading: boolean;
-  };
-}
-
 interface Thunks {
   loadTopics: Thunk<HTTPParams['loadTopics']>;
 }

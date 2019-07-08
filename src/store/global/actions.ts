@@ -1,17 +1,51 @@
-import * as types from './types';
 import {createAction} from 'services/reduxHelpers';
 
 export const setLoading = (payload: boolean) =>
-  createAction(types.SET_LOADING, payload);
+  createAction({
+    module: 'global',
+    type: 'SET_LOADING',
+    payload,
+    changer: ({payload}) => ({
+      loading: payload,
+    }),
+  });
 
 export const setPerPage = (payload: PerPage) =>
-  createAction(types.SET_PERPAGE, payload);
+  createAction({
+    module: 'global',
+    type: 'SET_PERPAGE',
+    payload,
+    changer: ({payload}) => ({
+      perPage: payload,
+    }),
+  });
 
 export const setTopics = (payload: Topic[]) =>
-  createAction(types.SET_TOPICS, payload);
+  createAction({
+    module: 'global',
+    type: 'SET_TOPICS',
+    payload,
+    changer: ({payload}) => ({
+      topics: payload,
+    }),
+  });
 
 export const setPageTotal = (payload: number) =>
-  createAction(types.SET_PAGETOTAL, payload);
+  createAction({
+    module: 'global',
+    type: 'SET_PAGETOTAL',
+    payload,
+    changer: ({payload}) => ({
+      pageTotal: payload,
+    }),
+  });
 
 export const setTopicTotal = (payload: number) =>
-  createAction(types.SET_TOPICTOTAL, payload);
+  createAction({
+    module: 'global',
+    type: 'SET_TOPICTOTAL',
+    payload,
+    changer: ({payload}) => ({
+      topicTotal: payload,
+    }),
+  });
