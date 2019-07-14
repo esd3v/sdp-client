@@ -6,10 +6,12 @@ import {
   compose,
 } from 'redux';
 import {reducer as globalReducer} from './global/reducer';
-import {combineReducers} from 'services/reduxHelpers';
+import {reducer as parserReducer} from './parser/reducer';
+import {combineReducers} from 'reduxHelpers';
 
 const rootReducer = combineReducers({
   global: globalReducer,
+  parser: parserReducer,
 });
 
 export const store = createStore(rootReducer, compose(

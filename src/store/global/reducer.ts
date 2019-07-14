@@ -1,4 +1,4 @@
-import {createReducer} from 'services/reduxHelpers';
+import {createReducer} from 'reduxHelpers';
 import {state} from './state';
 
-export const reducer = createReducer(state);
+export const reducer = createReducer('global', state);

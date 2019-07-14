@@ -1,9 +1,11 @@
-import {createContainer} from 'services/reduxHelpers';
+import {createContainer} from 'reduxHelpers';
 import {PerPage} from './perPage';
 
 export const PerPageContainer = createContainer({
   mapDispatch: {
-    actions: ['setPerPage'],
+    actions: {
+      parser: ['setPerPage'],
+    },
   },
   component: PerPage,
 });

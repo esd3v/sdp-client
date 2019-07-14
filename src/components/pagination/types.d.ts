@@ -1,4 +1,4 @@
-import * as actions from 'store/global/actions';
+import * as actions from 'store/parser/actions';
 import {RouteComponentProps} from 'react-router-dom';
 
 interface MatchParams {

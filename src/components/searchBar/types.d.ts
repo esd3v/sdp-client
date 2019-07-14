@@ -1,12 +1,12 @@
 import {RouteComponentProps} from 'react-router-dom';
-import * as actions from 'store/global/actions';
+import * as actions from 'store/parser/actions';
 
 interface MatchParams {
   appID: string;
 }
 
 export interface Props extends RouteComponentProps<MatchParams> {
-  perPage: AppState['global']['perPage'];
+  perPage: AppState['parser']['perPage'];
   loadTopics: Thunks['loadTopics'];
 }
 

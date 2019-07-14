@@ -1,10 +1,10 @@
-import {createContainer} from 'services/reduxHelpers';
+import {createContainer} from 'reduxHelpers';
 import {TopicList} from './topicList';
 
 export const TopicListContainer = createContainer({
   mapState: state => ({
-    topics: state.global.topics,
     loading: state.global.loading,
+    topics: state.parser.topics,
   }),
   component: TopicList,
 });

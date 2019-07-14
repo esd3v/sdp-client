@@ -7,11 +7,11 @@ interface MatchParams {
 
 export interface Props extends RouteComponentProps<MatchParams> {
   loadTopics: Thunks['loadTopics'];
-  topics: AppState['global']['topics'];
-  topicTotal: AppState['global']['topicTotal'];
   loading: AppState['global']['loading'];
-  pageTotal: AppState['global']['pageTotal'];
-  perPage: AppState['global']['perPage'];
+  topics: AppState['parser']['topics'];
+  topicTotal: AppState['parser']['topicTotal'];
+  pageTotal: AppState['parser']['pageTotal'];
+  perPage: AppState['parser']['perPage'];
 }
 
 export interface State {

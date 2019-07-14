@@ -1,13 +1,13 @@
-import {createContainer} from 'services/reduxHelpers';
+import {createContainer} from 'reduxHelpers';
 import {Main} from './main';
 
 export const MainContainer = createContainer({
   mapState: state => ({
-    topics: state.global.topics,
-    topicTotal: state.global.topicTotal,
     loading: state.global.loading,
-    pageTotal: state.global.pageTotal,
-    perPage: state.global.perPage,
+    topics: state.parser.topics,
+    topicTotal: state.parser.topicTotal,
+    pageTotal: state.parser.pageTotal,
+    perPage: state.parser.perPage,
   }),
   mapDispatch: {
     asyncActions: ['loadTopics'],

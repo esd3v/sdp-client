@@ -5,11 +5,13 @@ declare module '*.svg' {
 
 interface AppState {
   global: {
+    loading: boolean;
+  };
+  parser: {
     topics: Topic[];
     topicTotal: number;
     perPage: PerPage;
     pageTotal: number;
-    loading: boolean;
   };
 }
 
@@ -17,16 +19,6 @@ interface AppState {
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-// interface ReduxState {
-//   [key: string]: {
-//     [key in string]: {};
-//   };
-// }
-
-type AppStateModule<M extends keyof AppState> = {
-  [key in keyof AppState[M]]: AppState[M][key];
-};
-
 type AppStateChanges<M extends keyof AppState> = {
   [key in keyof AppState[M]]?: AppState[M][key];
 };
