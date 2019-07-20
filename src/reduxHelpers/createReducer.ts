@@ -1,13 +1,13 @@
 export const createReducer =
-  <M extends keyof AppState>(name: keyof AppState, initialState: AppState[M]) =>
+  <R extends keyof AppState>(name: keyof AppState, initialState: AppState[R]) =>
     (state = initialState, action: {
-      module: M;
+      reducer: R;
       type: string;
       payload?: any;
-      changer: AppStateChangerWithPayload<M, any>;
+      changer: AppStateChangerWithPayload<R, any>;
     }) => {
       if (name) {
-        if (name === action.module) {
+        if (name === action.reducer) {
           return {
             ...state,
             ...action.changer({

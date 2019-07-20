@@ -2,7 +2,7 @@ import {createAction} from 'reduxHelpers';
 
 export const setPerPage = (payload: PerPage) =>
   createAction({
-    module: 'parser',
+    reducer: 'parser',
     type: 'SET_PERPAGE',
     payload,
     changer: ({payload}) => ({
@@ -12,7 +12,7 @@ export const setPerPage = (payload: PerPage) =>
 
 export const setTopics = (payload: Topic[]) =>
   createAction({
-    module: 'parser',
+    reducer: 'parser',
     type: 'SET_TOPICS',
     payload,
     changer: ({payload}) => ({
@@ -22,7 +22,7 @@ export const setTopics = (payload: Topic[]) =>
 
 export const setPageTotal = (payload: number) =>
   createAction({
-    module: 'parser',
+    reducer: 'parser',
     type: 'SET_PAGETOTAL',
     payload,
     changer: ({payload}) => ({
@@ -32,7 +32,7 @@ export const setPageTotal = (payload: number) =>
 
 export const setTopicTotal = (payload: number) =>
   createAction({
-    module: 'parser',
+    reducer: 'parser',
     type: 'SET_TOPICTOTAL',
     payload,
     changer: ({payload}) => ({

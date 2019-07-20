@@ -2,13 +2,7 @@ import {RequireAtLeastOne} from 'type-fest';
 import {connect} from 'react-redux';
 import * as Router from 'react-router-dom';
 import * as thunks from 'store/thunks';
-import * as globalActions from 'store/global/actions';
-import * as parserActions from 'store/parser/actions';
-
-const actions = {
-  global: globalActions,
-  parser: parserActions,
-};
+import {actions} from 'store/actions';
 
 export const createContainer = ({
   mapState = null,
@@ -28,14 +22,25 @@ export const createContainer = ({
   component: any;
   withRouter?: boolean;
 }) => {
-  const getActionNames = (reducer: string) =>
+  const getActionNames = (reducer: string): string[] =>
     mapDispatch && mapDispatch['actions'][reducer];
 
-  const getAsyncActionNames = () =>
+  const getAsyncActionNames = (): string[] =>
     mapDispatch && mapDispatch['asyncActions'];
 
   const getReducerNames = () =>
     mapDispatch && Object.keys(mapDispatch['actions']);
+
+  // Boilerplate for dynamic require
+  // const createMappedActions = (actionNames: string[], module: {}) => {
+  //   const obj = {};
+
+  //   for (const name of actionNames) {
+  //     obj[name] = module[name];
+  //   }
+
+  //   return obj;
+  // };
 
   const createMappedActions = (actionNames: string[], actionModule: object) =>
     actionNames.map(name => ({

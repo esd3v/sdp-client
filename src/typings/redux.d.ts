@@ -19,27 +19,27 @@ interface AppState {
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-type AppStateChanges<M extends keyof AppState> = {
-  [key in keyof AppState[M]]?: AppState[M][key];
+type AppStateChanges<R extends keyof AppState> = {
+  [key in keyof AppState[R]]?: AppState[R][key];
 };
 
-type AppStateChanger<M extends keyof AppState> =
-  (options: {state: AppState[M]}) => AppStateChanges<M>;
+type AppStateChanger<R extends keyof AppState> =
+  (options: {state: AppState[R]}) => AppStateChanges<R>;
 
-type AppStateChangerWithPayload<M extends keyof AppState, P> =
-  (options: {payload: P, state: AppState[M]}) => AppStateChanges<M>;
+type AppStateChangerWithPayload<R extends keyof AppState, P> =
+  (options: {payload: P, state: AppState[R]}) => AppStateChanges<R>;
 
-interface Action<M extends keyof AppState> {
-  module: M;
+interface Action<R extends keyof AppState> {
+  reducer: R;
   type: string;
-  changer: AppStateChanger<M>;
+  changer: AppStateChanger<R>;
 }
 
-interface ActionWithPayload<M extends keyof AppState, P> {
-  module: M;
+interface ActionWithPayload<R extends keyof AppState, P> {
+  reducer: R;
   type: string;
   payload: P;
-  changer: AppStateChangerWithPayload<M, P>;
+  changer: AppStateChangerWithPayload<R, P>;
 }
 
 type Thunk<T> = (params: T) =>

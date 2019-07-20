@@ -1,28 +1,28 @@
-export function createAction<M extends keyof AppState, P>(
-  action: ActionWithPayload<M, P>,
-): ActionWithPayload<M, P>;
+export function createAction<R extends keyof AppState, P>(
+  action: ActionWithPayload<R, P>,
+): ActionWithPayload<R, P>;
 
-export function createAction<M extends keyof AppState>(
-  action: Action<M>,
-): Action<M>;
+export function createAction<R extends keyof AppState>(
+  action: Action<R>,
+): Action<R>;
 
-export function createAction<M extends keyof AppState, P>({
-  module,
+export function createAction<R extends keyof AppState, P>({
+  reducer,
   type,
   payload,
   changer,
 }: {
-  module: M;
+  reducer: R;
   type: string;
   payload?: P;
-  changer: AppStateChangerWithPayload<M, P> | AppStateChanger<M>;
+  changer: AppStateChangerWithPayload<R, P> | AppStateChanger<R>;
 }) {
   return (payload === undefined) ? {
-    module,
+    reducer,
     type,
     changer,
   } : {
-    module,
+    reducer,
     type,
     payload,
     changer,

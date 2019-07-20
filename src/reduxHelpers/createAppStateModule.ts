@@ -1,4 +1,4 @@
-export const createAppStateModule = <M extends keyof AppState>(
-  module: M,
-  state: AppState[M],
+export const createAppStateModule = <R extends keyof AppState>(
+  reducer: R,
+  state: AppState[typeof reducer],
 ) => state;

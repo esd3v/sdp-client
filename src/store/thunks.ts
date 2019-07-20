@@ -1,24 +1,23 @@
 import * as api from 'services/api';
-import * as globalActions from 'store/global/actions';
-import * as parserActions from 'store/parser/actions';
+import {actions} from 'store/actions';
 
 export const loadTopics: Thunks['loadTopics'] = ({appID, page, perPage}) =>
   async (dispatch, getState) => {
     const {global: {loading}} = getState();
     if (!loading) {
-      dispatch(globalActions.setLoading(true));
+      dispatch(actions.global.setLoading(true));
       try {
         const {
           topics,
           topicTotal,
           pageTotal,
         } = await api.loadTopics({appID, page, perPage});
-        dispatch(parserActions.setTopics(topics));
-        dispatch(parserActions.setPageTotal(pageTotal));
-        dispatch(parserActions.setTopicTotal(topicTotal));
-        dispatch(globalActions.setLoading(false));
+        dispatch(actions.parser.setTopics(topics));
+        dispatch(actions.parser.setPageTotal(pageTotal));
+        dispatch(actions.parser.setTopicTotal(topicTotal));
+        dispatch(actions.global.setLoading(false));
       } catch {
-        dispatch(globalActions.setLoading(false));
+        dispatch(actions.global.setLoading(false));
       }
     }
   };
