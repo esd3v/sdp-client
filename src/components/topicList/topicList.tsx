@@ -8,7 +8,7 @@ export const TopicList: React.SFC<Props> = props => (
   <div className={styles.topicList}>
     {props.topics.map(topic =>
       <TopicItem
-        key={topic.timestamp}
+        key={`${topic.title}${topic.timestamp}`}
         topic={topic}
       />)}
   {(props.loading === true) && <Spinner full={true}/>}
