@@ -6,6 +6,10 @@ declare module '*.svg' {
 interface AppState {
   global: {
     loading: boolean;
+    status: {
+      type: 'normal' | 'error' | 'success';
+      title: string;
+    };
   };
   parser: {
     topics: Topic[];
