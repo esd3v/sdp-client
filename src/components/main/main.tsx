@@ -4,6 +4,7 @@ import * as styles from './styles';
 import {Props, State} from './types';
 import {calculatePageCount} from 'misc';
 import {Spinner} from 'components/spinner';
+import {Status} from 'components/status';
 import {PerPage} from 'components/perPage';
 import {SearchBar} from 'components/searchBar';
 import {TopicList} from 'components/topicList';
@@ -11,18 +12,14 @@ import {Pagination} from 'components/pagination';
 
 export class Main extends React.Component<Props, State> {
 
-  public state: State = {
-    status: '',
-    socket: null,
-  };
-
   public componentDidMount() {
     const socket = new WebSocket(config.API_WS_ENDPOINT);
 
     socket.onmessage = event =>
-      this.setState(() => ({
-        status: event.data,
-      }));
+      this.props.setStatus({
+        title: event.data,
+        type: 'normal',
+      });
 
     // Load data on first load, even with no page selected
     if (this.getAppID()) {
@@ -70,12 +67,15 @@ export class Main extends React.Component<Props, State> {
       <div className={styles.main}>
         <SearchBar />
         {
+          <Status title={this.props.status.title} type={this.props.status.type}/>
+        }
+        {
           (this.props.topics.length > 0) &&
           <TopicList />
         }
         {
           (this.props.loading && this.props.topics.length <= 0) &&
-          <Spinner status={this.state.status} full={false}/>
+          <Spinner full={false}/>
         }
         <PerPage/>
         {
