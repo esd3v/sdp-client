@@ -1,13 +1,19 @@
 import axios from 'axios';
-import {
-  API_ENDPOINT,
-  API_TIMEOUT,
-} from 'config';
 
-export const get = params =>
-  axios.get(API_ENDPOINT, {
-    timeout: API_TIMEOUT,
-    params: {
-      ...params,
-    },
-  });
+export const createHttpClient = (config: {
+  host: string;
+  timeout: number;
+}) =>
+    ({path, method}: {
+      path: string;
+      method: 'post' | 'get' | 'put';
+    }) =>
+      (params: any) =>
+        axios({
+          method,
+          params,
+          url: `${config.host}${path}`,
+          timeout: config.timeout,
+        })
+          .then(result => [null, result])
+          .catch(error => [error, null]);

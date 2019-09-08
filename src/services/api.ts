@@ -1,6 +1,18 @@
 import * as http from './http';
+import * as config from 'config';
 
-export const loadTopics: HTTPRequest['loadTopics'] = async params => {
-  const topics = await http.get(params);
-  return topics.data;
-};
+const httpClient = http.createHttpClient({
+  host: config.API_ENDPOINT,
+  timeout: config.API_TIMEOUT,
+});
+
+const loadTopicsRequest = httpClient({
+  path: '/',
+  method: 'get',
+});
+
+export const loadTopics = (params: {
+  appID: number;
+  page: number;
+  perPage: PerPage;
+}) => loadTopicsRequest(params);

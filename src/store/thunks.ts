@@ -7,14 +7,10 @@ export const loadTopics: Thunks['loadTopics'] = ({appID, page, perPage}) =>
     if (!loading) {
       dispatch(actions.global.setLoading(true));
       try {
-        const {
-          topics,
-          topicTotal,
-          pageTotal,
-        } = await api.loadTopics({appID, page, perPage});
-        dispatch(actions.parser.setTopics(topics));
-        dispatch(actions.parser.setPageTotal(pageTotal));
-        dispatch(actions.parser.setTopicTotal(topicTotal));
+        const [error, result] = await api.loadTopics({appID, page, perPage});
+        dispatch(actions.parser.setTopics(result.data.topics));
+        dispatch(actions.parser.setPageTotal(result.data.pageTotal));
+        dispatch(actions.parser.setTopicTotal(result.data.topicTotal));
         dispatch(actions.global.setLoading(false));
       } catch {
         dispatch(actions.global.setLoading(false));
