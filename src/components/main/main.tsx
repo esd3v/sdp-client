@@ -13,6 +13,7 @@ import {Pagination} from 'components/pagination';
 export class Main extends React.Component<Props, State> {
 
   public componentDidMount() {
+    const appID = this.getAppID();
     const socket = new WebSocket(config.API_WS_ENDPOINT);
 
     socket.onmessage = event =>
@@ -22,13 +23,20 @@ export class Main extends React.Component<Props, State> {
       });
 
     // Load data on first load, even with no page selected
-    if (this.getAppID()) {
-      this.loadTopics(this.getCurrentPage() || 1);
+    if (appID) {
+      if (isNaN(parseInt(appID, 10))) {
+        this.props.setStatus({
+          title: 'AppID must be a number',
+          type: 'error',
+        });
+      } else {
+        this.loadTopics(this.getCurrentPage() || 1);
+      }
     }
   }
 
   public componentDidUpdate(prevProps: Props) {
-    const appID = this.getAppID();
+    const appID = parseInt(this.getAppID(), 10);
     const selectedPage = this.getCurrentPage();
 
     // If topics has (just) been loaded
@@ -77,7 +85,7 @@ export class Main extends React.Component<Props, State> {
           (this.props.loading && this.props.topics.length <= 0) &&
           <Spinner full={false}/>
         }
-        <PerPage/>
+        <PerPage disabled={this.props.loading} />
         {
           (this.props.pageTotal > 0) &&
           <Pagination/>
@@ -87,14 +95,14 @@ export class Main extends React.Component<Props, State> {
   }
 
   private getAppID = () =>
-    parseInt(this.props.match.params.appID, 10)
+    this.props.match.params.appID;
 
   private getCurrentPage = () =>
     parseInt(this.props.match.params.page, 10)
 
   private loadTopics = (page: number) =>
     this.props.loadTopics({
-      appID: this.getAppID(),
+      appID: parseInt(this.getAppID(), 10),
       page,
       perPage: this.props.perPage,
     })

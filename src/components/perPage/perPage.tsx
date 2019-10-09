@@ -13,7 +13,7 @@ export const PerPage: React.SFC<Props> = props => {
   return (
     <div className={styles.perPage}>
       <div className="label">Per page:</div>
-      <select onChange={onChange}>
+      <select disabled={props.disabled} onChange={onChange}>
         {PERPAGE.map(item =>
           <option key={item}>{item}</option>)}
       </select>

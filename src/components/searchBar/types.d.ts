@@ -6,6 +6,7 @@ interface MatchParams {
 }
 
 export interface Props extends RouteComponentProps<MatchParams> {
+  isLoading: boolean;
   perPage: AppState['parser']['perPage'];
   loadTopics: Thunks['loadTopics'];
 }

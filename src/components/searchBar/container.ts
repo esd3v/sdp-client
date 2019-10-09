@@ -3,6 +3,7 @@ import {SearchBar} from './searchBar';
 
 export const SearchBarContainer = createContainer({
   mapState: state => ({
+    isLoading: state.global.loading,
     perPage: state.parser.perPage,
   }),
   mapDispatch: {

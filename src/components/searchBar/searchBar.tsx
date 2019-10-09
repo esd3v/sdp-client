@@ -12,7 +12,7 @@ export class SearchBar extends React.Component<Props, State> {
 
   public componentDidMount() {
     this.setState(() => ({
-      value: this.props.match.params.appID || '',
+      value: !isNaN(parseInt(this.props.match.params.appID, 10)) ? this.props.match.params.appID : '',
     }));
   }
 
@@ -23,6 +23,7 @@ export class SearchBar extends React.Component<Props, State> {
           <input
             onChange={this.handleChange}
             value={this.state.value}
+            disabled={this.props.isLoading}
             placeholder="Insert ID of Steam application (e.g. 629760)"
           />
           <Button
@@ -41,7 +42,7 @@ export class SearchBar extends React.Component<Props, State> {
   }
 
   private isButtonDisabled() {
-    return !this.state.value;
+    return !this.state.value || this.props.isLoading;
   }
 
   private handleChange = e => {
