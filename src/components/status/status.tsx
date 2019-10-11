@@ -1,5 +1,5 @@
 import * as React from 'react';
 import {Props} from './types';
 
-export const Status: React.SFC<Props> = ({title, className}) =>
-  <div className={className}>{title}</div>;
+export const Status: React.SFC<Props> = ({message, className}) =>
+  <div className={className}>{message}</div>;

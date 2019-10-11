@@ -18,7 +18,7 @@ export class Main extends React.Component<Props, State> {
 
     socket.onmessage = event =>
       this.props.setStatus({
-        title: event.data,
+        message: event.data,
         type: 'normal',
       });
 
@@ -26,7 +26,7 @@ export class Main extends React.Component<Props, State> {
     if (appID) {
       if (isNaN(parseInt(appID, 10))) {
         this.props.setStatus({
-          title: 'AppID must be a number',
+          message: 'AppID must be a number',
           type: 'error',
         });
       } else {
@@ -75,7 +75,8 @@ export class Main extends React.Component<Props, State> {
       <div className={styles.main}>
         <SearchBar />
         {
-          <Status title={this.props.status.title} type={this.props.status.type}/>
+          this.props.status.message &&
+          <Status message={this.props.status.message} type={this.props.status.type}/>
         }
         {
           (this.props.topics.length > 0) &&
@@ -95,7 +96,7 @@ export class Main extends React.Component<Props, State> {
   }
 
   private getAppID = () =>
-    this.props.match.params.appID;
+    this.props.match.params.appID
 
   private getCurrentPage = () =>
     parseInt(this.props.match.params.page, 10)

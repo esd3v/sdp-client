@@ -8,7 +8,7 @@ interface AppState {
     loading: boolean;
     status: {
       type: 'normal' | 'error' | 'success';
-      title: string;
+      message: string;
     };
   };
   parser: {

@@ -8,14 +8,14 @@ export const loadTopics: Thunks['loadTopics'] = ({appID, page, perPage}) =>
       dispatch(actions.global.setLoading(true));
       try {
         const [error, result] = await api.loadTopics({appID, page, perPage});
-        let statusTitle = `Couldn't connect to the server`;
+        let statusMessage = `Couldn't connect to the server`;
 
         if (error) {
           if (error.response) {
-            statusTitle = error.response.data.title;
+            statusMessage = error.response.data.message;
           }
           dispatch(actions.global.setStatus({
-            title: statusTitle,
+            message: statusMessage,
             type: 'error',
           }));
         }

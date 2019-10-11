@@ -4,6 +4,6 @@ export const state = createAppStateModule('global', {
   loading: false,
   status: {
     type: 'normal',
-    title: '',
+    message: '',
   },
 });
