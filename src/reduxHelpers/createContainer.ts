@@ -16,8 +16,8 @@ export const createContainer = ({
   mapDispatch?: RequireAtLeastOne<{
     actions: RequireAtLeastOne<{
       [key in keyof AppState]: [keyof typeof actions[key]];
-    }>,
-    asyncActions: [keyof typeof thunks],
+    }>;
+    asyncActions: [keyof typeof thunks];
   }> | null;
   component: any;
   withRouter?: boolean;

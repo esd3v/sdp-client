@@ -42,10 +42,7 @@ module.exports = {
             loader: 'ts-loader',
           },
           {
-            loader: 'tslint-loader',
-            query: {
-              failOnHint: false,
-            },
+            loader: 'eslint-loader',
           },
         ],
       },
