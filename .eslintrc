@@ -10,6 +10,11 @@
     "es2020": true,
     "jest": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
@@ -21,7 +26,7 @@
   "rules": {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-use-before-define": 1,
     "@typescript-eslint/no-inferrable-types": [1, {
       "ignoreParameters": true
     }],
@@ -38,7 +43,12 @@
     }],
     "no-import-assign": "error",
     "block-spacing": ["error", "never"],
-    "spaced-comment": ["error", "always"],
+    "spaced-comment": ["error", "always", {
+      "line": {
+          "markers": ["/"],
+          "exceptions": ["/"]
+      }
+  }],
     "no-multi-spaces": "error",
     "no-irregular-whitespace": "error",
     "object-curly-spacing": ["error", "never"],
