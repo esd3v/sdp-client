@@ -1,7 +1,9 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "jsx": true,
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "useJSXTextNode": true
   },
   "env": {
@@ -73,6 +75,11 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/prop-types": 0,
     "react/display-name": 0,
+    "react/jsx-tag-spacing": ["warn", {
+      "beforeClosing": "never",
+      "beforeSelfClosing": "never"
+    }],
+    "react/jsx-boolean-value": ["error", "always"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }

@@ -102,20 +102,20 @@ export const Main: FunctionComponent = () => {
 
   return (
     <div className={styles.main}>
-      <SearchBar />
+      <SearchBar/>
       {
         status.message &&
         <Status message={status.message} type={status.type}/>
       }
       {
         (topics.length > 0) &&
-        <TopicList />
+        <TopicList/>
       }
       {
         (loading && topics.length <= 0) &&
         <Spinner full={false}/>
       }
-      <PerPage disabled={loading} />
+      <PerPage disabled={loading}/>
       {
         (pageTotal > 0) &&
         <Pagination/>
