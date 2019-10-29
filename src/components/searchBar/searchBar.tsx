@@ -1,75 +1,67 @@
-import * as React from 'react';
-import * as styles from './styles';
+import React, {
+  useState,
+  FunctionComponent,
+  useEffect,
+} from 'react';
+import {useParams, useHistory} from 'react-router';
+import {useSelector} from 'react-redux';
 import {Button} from 'components/button';
-import {Props, State} from './types';
-import {Redirect} from 'react-router';
+import {usePrevious} from 'hooks';
+import * as styles from './styles';
+import {isDigitsOnly} from '../../misc';
 
-export class SearchBar extends React.Component<Props, State> {
-  public state = {
-    value: '',
-    redirect: false,
+export const SearchBar: FunctionComponent = () => {
+  const history = useHistory();
+  const {appID} = useParams();
+
+  const isLoading = useSelector((state: AppState) => state.global.loading);
+
+  const [value, setValue] = useState('');
+  const prevValue = usePrevious(value);
+
+  const isButtonDisabled = () =>
+    !value || isLoading;
+
+  const handleChange = e => {
+    if (e.target.value) {
+      if (isDigitsOnly(e.target.value)) {
+        setValue(e.target.value);
+      }
+    } else {
+      setValue('');
+    }
   };
 
-  public componentDidMount() {
-    this.setState(() => ({
-      value: !isNaN(parseInt(this.props.match.params.appID, 10)) ? this.props.match.params.appID : '',
-    }));
-  }
-
-  public render() {
-    return (
-      <>
-        <form className={styles.searchBar}>
-          <input
-            onChange={this.handleChange}
-            value={this.state.value}
-            disabled={this.props.isLoading}
-            placeholder="Insert ID of Steam application (e.g. 629760)"
-          />
-          <Button
-            type="submit"
-            disabled={this.isButtonDisabled()}
-            onClick={this.handleClick}
-          >Parse
-          </Button>
-        </form>
-        {
-          this.state.redirect &&
-          <Redirect to={`/app/${this.state.value}`}/>
-        }
-      </>
-    );
-  }
-
-  private isButtonDisabled() {
-    return !this.state.value || this.props.isLoading;
-  }
-
-  private handleChange = e => {
-    const value = e.target.value;
-    const isDigits = [...value].every(item =>
-      '0123456789'.includes(item));
-
-    if (isDigits) {
-      this.setState(() => ({
-        value,
-      }));
-    }
-  }
-
-  private handleClick = async e => {
+  const handleClick = async e => {
     e.preventDefault();
 
-    this.props.loadTopics({
-      appID: parseInt(this.state.value, 10),
-      page: 1,
-      perPage: this.props.perPage,
-    });
+    if (value) {
+      history.replace(`/app/${value}`);
+    }
+  };
 
-    this.setState(() => ({
-      redirect: true,
-    }), () => this.setState(() => ({
-      redirect: false,
-    })));
-  }
-}
+  useEffect(() => {
+    if (appID && Number(appID) && !value && !prevValue) {
+      setValue(appID);
+    }
+  }, [appID, value, prevValue]);
+
+  return (
+    <>
+      <form className={styles.searchBar}>
+        <input
+          onChange={handleChange}
+          value={value}
+          disabled={isLoading}
+          placeholder="Insert ID of Steam application (e.g. 881100)"
+        />
+        <Button
+          type="submit"
+          disabled={isButtonDisabled()}
+          onClick={handleClick}
+        >Parse
+        </Button>
+      </form>
+    </>
+  );
+};

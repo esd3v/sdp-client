@@ -31,7 +31,7 @@ type AppStateChanger<R extends keyof AppState> =
   (options: {state: AppState[R]}) => AppStateChanges<R>;
 
 type AppStateChangerWithPayload<R extends keyof AppState, P> =
-  (options: {payload: P, state: AppState[R]}) => AppStateChanges<R>;
+  (options: {payload: P; state: AppState[R]}) => AppStateChanges<R>;
 
 interface Action<R extends keyof AppState> {
   reducer: R;

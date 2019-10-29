@@ -1,1 +1,1 @@
-export {SearchBarContainer as SearchBar} from './container';
+export {SearchBar} from './searchBar';

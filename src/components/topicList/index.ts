@@ -1,1 +1,1 @@
-export {TopicListContainer as TopicList} from './container';
+export {TopicList} from './topicList';

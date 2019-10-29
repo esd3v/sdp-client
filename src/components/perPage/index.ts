@@ -1,1 +1,1 @@
-export {PerPageContainer as PerPage} from './container';
+export {PerPage} from './perPage';

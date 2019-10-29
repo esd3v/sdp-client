@@ -5,6 +5,7 @@ import {createBrowserHistory} from 'history';
 import {render} from 'react-dom';
 import {store} from 'store';
 import {Root} from 'components/routes/root';
+import {ErrorBoundary} from 'components/errorBoundary';
 require('./styles/global');
 require('./styles/fonts');
 
@@ -14,7 +15,9 @@ render(
   (
     <Provider store={store}>
       <Router history={customHistory}>
-        <Root/>
+        <ErrorBoundary>
+          <Root/>
+        </ErrorBoundary>
       </Router>
     </Provider>
   ),

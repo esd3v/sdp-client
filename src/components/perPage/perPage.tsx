@@ -1,14 +1,18 @@
-import * as React from 'react';
+import React from 'react';
+import {useDispatch} from 'react-redux';
 import {PERPAGE} from 'config';
+import {actions} from 'store/actions';
 import {Props} from './types';
 import * as styles from './styles';
 
-export const PerPage: React.SFC<Props> = props => {
-  const onChange = e => {
-    const value = parseInt(e.target.value, 10) as PerPage;
+export const PerPage: React.FunctionComponent<Props> = props => {
+  const dispatch = useDispatch();
 
-    props.setPerPage(value);
-  };
+  const setPerPage = (payload: PerPage) =>
+    dispatch(actions.parser.setPerPage(payload));
+
+  const onChange = e =>
+    setPerPage(Number(e.target.value) as PerPage);
 
   return (
     <div className={styles.perPage}>
