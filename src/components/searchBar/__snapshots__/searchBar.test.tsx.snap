@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.emotion-0 {
+  color: #fff;
+  font-size: 16px;
+  background-color: #448AFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  min-width: 64px;
+}
+
+.emotion-0:hover:enabled {
+  background-color: #6aa2ff;
+}
+
+.emotion-0:active:enabled {
+  background-color: #1e72ff;
+}
+
+.emotion-0:disabled {
+  background-color: #bfbfbf;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.emotion-1 > *:first-of-type {
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+}
+
+.emotion-1 input {
+  padding: 12px 8px;
+  width: 100%;
+}
+
+.emotion-1 button {
+  min-height: 36px;
+}
+
+@media (min-width:576px) {
+  .emotion-1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .emotion-1 > *:first-of-type {
+    margin-bottom: 0;
+  }
+}
+
+<form
+  className="emotion-1"
+>
+  <input
+    disabled={false}
+    onChange={[Function]}
+    placeholder="Insert ID of Steam application (e.g. 881100)"
+    value=""
+  />
+  <button
+    className="emotion-0"
+    disabled={true}
+    onClick={[Function]}
+    type="submit"
+  >
+    Parse
+  </button>
+</form>
+`;

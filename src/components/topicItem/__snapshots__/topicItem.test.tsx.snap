@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.emotion-5 {
+  width: 16px;
+  height: 16px;
+}
+
+.emotion-4 {
+  width: inherit;
+  height: inherit;
+}
+
+.emotion-9 {
+  padding: 12px;
+  background-color: #fff;
+}
+
+.emotion-9:hover {
+  background-color: #f1f6ff;
+}
+
+.emotion-9:not(:last-of-type) {
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.emotion-2 {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 14px;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+@media (min-width:576px) {
+  .emotion-8 {
+    -webkit-flex-wrap: initial;
+    -ms-flex-wrap: initial;
+    flex-wrap: initial;
+    -webkit-box-pack: initial;
+    -webkit-justify-content: initial;
+    -ms-flex-pack: initial;
+    justify-content: initial;
+  }
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.emotion-0 {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emotion-3 {
+  height: 18px;
+  font-size: 14px;
+  margin-right: auto;
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
+@media (min-width:576px) {
+  .emotion-3 {
+    -webkit-flex-basis: initial;
+    -ms-flex-preferred-size: initial;
+    flex-basis: initial;
+  }
+}
+
+.emotion-6 {
+  fill: #448AFF;
+}
+
+.emotion-7 {
+  margin: 0 6px;
+}
+
+<div
+  className="emotion-9"
+>
+  <div
+    className="emotion-2"
+  >
+    <div
+      className="emotion-1"
+    >
+      <a
+        className="emotion-0"
+        data-tippy-content=""
+        href=""
+      >
+        
+      </a>
+    </div>
+  </div>
+  <div
+    className="emotion-8"
+  >
+    <div
+      className="emotion-3"
+    >
+      
+    </div>
+    <div>
+      01.01.1970 @ 07:00
+    </div>
+    <span
+      className="emotion-5 emotion-6 emotion-7"
+    >
+      <svg
+        className="emotion-4"
+      >
+        <use
+          xlinkHref="#undefined"
+        />
+      </svg>
+    </span>
+    <div>
+      0
+    </div>
+  </div>
+</div>
+`;

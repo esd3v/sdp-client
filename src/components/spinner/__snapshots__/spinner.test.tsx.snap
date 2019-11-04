@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(19px,0);
+    -ms-transform: translate(19px,0);
+    transform: translate(19px,0);
+  }
+}
+
+@keyframes animation-2 {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+.emotion-0 {
+  padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: 96px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  background-color: #fff;
+}
+
+.emotion-0 .spinner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  width: 55px;
+  height: 11px;
+}
+
+.emotion-0 .spinner div {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #448AFF;
+  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-timing-function: cubic-bezier(0,1,1,0);
+}
+
+.emotion-0 .spinner div:nth-of-type(1) {
+  left: 6px;
+  -webkit-animation: animation-0 0.6s infinite;
+  animation: animation-0 0.6s infinite;
+}
+
+.emotion-0 .spinner div:nth-of-type(2) {
+  left: 6px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-0 .spinner div:nth-of-type(3) {
+  left: 26px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-0 .spinner div:nth-of-type(4) {
+  left: 45px;
+  -webkit-animation: animation-2 0.6s infinite;
+  animation: animation-2 0.6s infinite;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    className="spinner"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;

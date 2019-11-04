@@ -9,7 +9,7 @@ export const Button: React.FunctionComponent<Props> = ({
   ...rest
 }) =>
   <button
-    className={`${styles.button} ${className}`}
+    className={`${styles.button}${className ? ` ${className}` : ''}`}
     onClick={onClick}
     {...rest}
   >{children}

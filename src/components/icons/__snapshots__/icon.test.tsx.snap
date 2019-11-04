@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.emotion-1 {
+  width: 16px;
+  height: 16px;
+}
+
+.emotion-0 {
+  width: inherit;
+  height: inherit;
+}
+
+<span
+  className="emotion-1"
+>
+  <svg
+    className="emotion-0"
+  >
+    <use
+      xlinkHref="#"
+    />
+  </svg>
+</span>
+`;

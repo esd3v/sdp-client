@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  .emotion-0 {
+  color: #fff;
+  font-size: 16px;
+  background-color: #448AFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  min-width: 64px;
+}
+
+.emotion-0:hover:enabled {
+  background-color: #6aa2ff;
+}
+
+.emotion-0:active:enabled {
+  background-color: #1e72ff;
+}
+
+.emotion-0:disabled {
+  background-color: #bfbfbf;
+}
+
+.emotion-5 {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.emotion-1 {
+  padding: 6px 8px;
+}
+
+.emotion-2 {
+  width: 50%;
+  margin: 0 16px;
+}
+
+<div>
+    <div
+      className="emotion-5"
+    >
+      <button
+        className="emotion-0 emotion-1"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Prev
+      </button>
+      <select
+        className="emotion-2"
+        onChange={[Function]}
+        value={NaN}
+      />
+      <button
+        className="emotion-0 emotion-1"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Next
+      </button>
+    </div>
+  </div>,
+  .emotion-2 {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.emotion-0 {
+  width: 32px;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 3px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  background-color: #fff;
+  width: auto;
+  height: auto;
+  color: initial;
+  font-size: 16px;
+  padding: 6px 8px;
+}
+
+.emotion-0:hover {
+  color: #fff;
+  background-color: #448AFF;
+}
+
+<div>
+    <ul
+      className="emotion-2"
+    >
+      <li
+        className="emotion-0 disabled"
+      >
+        <a
+          aria-disabled="true"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          Prev
+        </a>
+      </li>
+      <li
+        className="emotion-0"
+      >
+        <a
+          aria-disabled="false"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
+  </div>,
+]
+`;

@@ -1,3 +1,3 @@
 export interface Props {
-  disabled: boolean;
+  disabled?: boolean;
 }

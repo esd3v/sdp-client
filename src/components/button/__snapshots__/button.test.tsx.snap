@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.emotion-0 {
+  color: #fff;
+  font-size: 16px;
+  background-color: #448AFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  min-width: 64px;
+}
+
+.emotion-0:hover:enabled {
+  background-color: #6aa2ff;
+}
+
+.emotion-0:active:enabled {
+  background-color: #1e72ff;
+}
+
+.emotion-0:disabled {
+  background-color: #bfbfbf;
+}
+
+<button
+  className="emotion-0"
+>
+  test
+</button>
+`;
