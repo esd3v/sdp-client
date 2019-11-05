@@ -9,7 +9,7 @@
   },
   "scripts": {
     "watch": "webpack-dev-server --config webpack.dev.config.js",
-    "build": "webpack --config webpack.prod.config.js",
+    "build": "npm run test && webpack --config webpack.prod.config.js",
     "lint": "eslint ./src --ext .ts --ext .tsx",
     "test": "jest",
     "test:watch": "jest --watch",
