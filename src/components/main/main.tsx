@@ -86,7 +86,7 @@ export const Main: FunctionComponent = () => {
 
   // e.g. if on the last page when perPage is 15, then switch to perPage 50
   useEffect(() => {
-    if (perPage !== prevPerPage) {
+    if ((perPage !== prevPerPage) && appID) {
       const predictedPageCount = calculatePageCount({
         perPage,
         total: topicTotal,
