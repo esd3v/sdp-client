@@ -8,7 +8,6 @@ import {useSelector} from 'react-redux';
 import {Button} from 'components/button';
 import {usePrevious} from 'hooks';
 import * as styles from './styles';
-import {isDigitsOnly} from '../../misc';
 
 export const SearchBar: FunctionComponent = () => {
   const history = useHistory();
@@ -23,13 +22,7 @@ export const SearchBar: FunctionComponent = () => {
     !value || isLoading;
 
   const handleChange = e => {
-    if (e.target.value) {
-      if (isDigitsOnly(e.target.value)) {
-        setValue(e.target.value);
-      }
-    } else {
-      setValue('');
-    }
+    setValue(e.target.value);
   };
 
   const handleClick = async e => {
@@ -53,7 +46,7 @@ export const SearchBar: FunctionComponent = () => {
           onChange={handleChange}
           value={value}
           disabled={isLoading}
-          placeholder="Insert ID of Steam application (e.g. 881100)"
+          placeholder="ID of Steam application (e.g. 881100)"
         />
         <Button
           type="submit"
