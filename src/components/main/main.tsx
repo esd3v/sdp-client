@@ -18,6 +18,13 @@ import * as styles from './styles';
 import * as config from '../../config';
 import {usePrevious} from '../../hooks';
 
+let socket;
+
+const wsConnect = () =>
+  socket = new WebSocket(config.API_WS_ENDPOINT);
+
+wsConnect();
+
 export const Main: FunctionComponent = () => {
   const history = useHistory();
   const {appID, page} = useParams();
@@ -39,7 +46,11 @@ export const Main: FunctionComponent = () => {
       type: 'normal',
     })), [dispatch]);
 
-  const updateTopics = useCallback((page: number) => {
+  const loadTopics = useCallback((page: number) => {
+    if (socket.readyState === 3) {
+      wsConnect();
+    }
+
     dispatch(thunks.loadTopics({
       appID: Number(appID),
       page: page || 1,
@@ -47,27 +58,27 @@ export const Main: FunctionComponent = () => {
     }));
   }, [appID, dispatch, perPage]);
 
-  useEffect(() => {
-    const socket = new WebSocket(config.API_WS_ENDPOINT);
-
-    socket.onmessage = event => setStatus(event.data);
-  }, [setStatus]);
+  socket.onopen = () =>
+    socket.onmessage = event =>
+      setStatus(event.data);
 
   // first launch
   useEffect(() => {
     if (appID) {
-      if (!topics.length) {
-        if (!page) {
-          history.replace(`/app/${appID}/page/${page || 1}`);
-          updateTopics(1);
-        } else {
-          updateTopics(Number(page));
+      // don't let perPage change trigger loadTopics with incorrect appID
+      if (perPage === prevPerPage) {
+        if (!topics.length) {
+          if (!page) {
+            history.replace(`/app/${appID}/page/1`);
+          } else {
+            loadTopics(Number(page));
+          }
         }
       }
     } else {
       history.replace('/');
     }
-  }, [appID, history, page, topics, updateTopics]);
+  }, [appID, history, page, topics, loadTopics, perPage, prevPerPage]);
 
   // topics loaded via button for the first time
   useEffect(() => {
@@ -79,14 +90,14 @@ export const Main: FunctionComponent = () => {
   // page switching (history changes)
   useEffect(() => {
     if (page && (page !== prevPage)) {
-      updateTopics(Number(page));
+      loadTopics(Number(page));
     }
 
-  }, [page, prevPage, updateTopics]);
+  }, [page, prevPage, loadTopics]);
 
   // e.g. if on the last page when perPage is 15, then switch to perPage 50
   useEffect(() => {
-    if ((perPage !== prevPerPage) && appID) {
+    if ((perPage !== prevPerPage) && Number(appID)) {
       const predictedPageCount = calculatePageCount({
         perPage,
         total: topicTotal,
@@ -95,10 +106,10 @@ export const Main: FunctionComponent = () => {
       if (Number(page) > predictedPageCount) {
         history.replace(`/app/${appID}/page/${predictedPageCount}`);
       } else {
-        updateTopics(Number(page));
+        loadTopics(Number(page));
       }
     }
-  }, [perPage, prevPerPage, appID, history, page, topicTotal, updateTopics]);
+  }, [perPage, prevPerPage, appID, history, page, topicTotal, loadTopics]);
 
   return (
     <div className={styles.main}>
