@@ -18,7 +18,8 @@ import * as styles from './styles';
 import * as config from '../../config';
 import {usePrevious} from '../../hooks';
 
-let socket;
+let socket: WebSocket;
+let appHasChanged: boolean;
 
 const wsConnect = () =>
   socket = new WebSocket(config.API_WS_ENDPOINT);
@@ -32,6 +33,7 @@ export const Main: FunctionComponent = () => {
   const perPage = useSelector((state: AppState) => state.parser.perPage);
   const prevPerPage = usePrevious(perPage);
   const prevPage = usePrevious(page);
+  const prevAppID = usePrevious(appID);
 
   const dispatch = useDispatch();
   const loading = useSelector((state: AppState) => state.global.loading);
@@ -39,6 +41,8 @@ export const Main: FunctionComponent = () => {
   const topics = useSelector((state: AppState) => state.parser.topics);
   const topicTotal = useSelector((state: AppState) => state.parser.topicTotal);
   const pageTotal = useSelector((state: AppState) => state.parser.pageTotal);
+
+  const prevTopics = usePrevious(topics);
 
   const setStatus = useCallback((message: string) =>
     dispatch(actions.global.setStatus({
@@ -68,11 +72,7 @@ export const Main: FunctionComponent = () => {
       // don't let perPage change trigger loadTopics with incorrect appID
       if (perPage === prevPerPage) {
         if (!topics.length) {
-          if (!page) {
-            history.replace(`/app/${appID}/page/1`);
-          } else {
-            loadTopics(Number(page));
-          }
+          loadTopics(!page ? 1 : Number(page));
         }
       }
     } else {
@@ -80,12 +80,33 @@ export const Main: FunctionComponent = () => {
     }
   }, [appID, history, page, topics, loadTopics, perPage, prevPerPage]);
 
-  // topics loaded via button for the first time
+  // if topics has finished loading
   useEffect(() => {
-    if (topics.length && !page) {
-      history.replace(`/app/${appID}/page/1`);
+    if (topics !== prevTopics) {
+
+      // topics loaded for the first time
+      if (prevTopics && !prevTopics.length) {
+
+        // topics loaded via button
+        if (!page) {
+          history.replace(`/app/${appID}/page/1`);
+        }
+      } else {
+        if (appHasChanged) {
+          history.replace(`/app/${appID}/page/1`);
+        }
+      }
+      appHasChanged = false;
     }
-  }, [topics, appID, history, page]);
+  }, [topics, prevTopics, appID, history, page, prevAppID]);
+
+  // topics loaded via button with different appID
+  useEffect(() => {
+    if (appID !== prevAppID) {
+      loadTopics(1);
+      appHasChanged = true;
+    }
+  }, [appID, prevAppID, loadTopics]);
 
   // page switching (history changes)
   useEffect(() => {
@@ -93,7 +114,7 @@ export const Main: FunctionComponent = () => {
       loadTopics(Number(page));
     }
 
-  }, [page, prevPage, loadTopics]);
+  }, [page, prevPage, loadTopics, appID, prevAppID]);
 
   // e.g. if on the last page when perPage is 15, then switch to perPage 50
   useEffect(() => {
@@ -119,16 +140,21 @@ export const Main: FunctionComponent = () => {
         <Status message={status.message} type={status.type}/>
       }
       {
-        (topics.length > 0) &&
-        <TopicList/>
+        ((!topics.length && loading === true) || appHasChanged) &&
+        <Spinner full={false}/>
       }
       {
-        (loading && topics.length <= 0) &&
-        <Spinner full={false}/>
+        (topics.length > 0 && !appHasChanged) &&
+        <TopicList topics={topics}>
+        {
+          (loading === true) &&
+          <Spinner full={true}/>
+        }
+        </TopicList>
       }
       <PerPage disabled={loading}/>
       {
-        (pageTotal > 0) &&
+        (pageTotal > 0 && !appHasChanged) &&
         <Pagination/>
       }
     </div>
