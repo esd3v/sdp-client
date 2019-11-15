@@ -29,7 +29,11 @@ exports[`renders correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-bottom: 12px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 13px;
 }
 
 .emotion-1 > *:first-of-type {
@@ -44,6 +48,7 @@ exports[`renders correctly 1`] = `
 
 .emotion-1 button {
   min-height: 36px;
+  min-width: 104px;
 }
 
 @media (min-width:576px) {
@@ -56,10 +61,16 @@ exports[`renders correctly 1`] = `
   .emotion-1 > *:first-of-type {
     margin-bottom: 0;
   }
+
+  .emotion-1 input {
+    padding: 12px 8px;
+    width: 77%;
+  }
 }
 
 <form
   className="emotion-1"
+  onSubmit={[Function]}
 >
   <input
     disabled={false}
@@ -70,7 +81,6 @@ exports[`renders correctly 1`] = `
   <button
     className="emotion-0"
     disabled={true}
-    onClick={[Function]}
     type="submit"
   >
     Parse

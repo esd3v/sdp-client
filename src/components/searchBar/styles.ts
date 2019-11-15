@@ -5,7 +5,8 @@ import {mq} from 'styles/mediaQueries';
 export const searchBar = css`
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px;
+  justify-content: space-between;
+  margin-bottom: 13px;
   & > *:first-of-type {
     margin-bottom: 16px;
     box-shadow: ${variables.shadow};
@@ -16,11 +17,16 @@ export const searchBar = css`
   }
   button {
     min-height: 36px;
+    min-width: 104px;
   }
   ${mq.sm} {
     flex-direction: row;
     & > *:first-of-type {
       margin-bottom: 0;
+    }
+    input {
+      padding: 12px 8px;
+      width: 77%;
     }
   }
 `;

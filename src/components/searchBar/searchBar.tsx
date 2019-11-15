@@ -25,10 +25,10 @@ export const SearchBar: FunctionComponent = () => {
     setValue(e.target.value);
   };
 
-  const handleClick = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    if (value) {
+    if (value && (value !== appID)) {
       history.replace(`/app/${value}`);
     }
   };
@@ -41,7 +41,7 @@ export const SearchBar: FunctionComponent = () => {
 
   return (
     <>
-      <form className={styles.searchBar}>
+      <form className={styles.searchBar} onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
           value={value}
@@ -51,7 +51,6 @@ export const SearchBar: FunctionComponent = () => {
         <Button
           type="submit"
           disabled={isButtonDisabled()}
-          onClick={handleClick}
         >Parse
         </Button>
       </form>
