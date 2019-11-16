@@ -45,7 +45,9 @@ export const button = css`
   height: auto;
   color: initial;
   font-size: 16px;
-  padding: 6px 8px;
+  a {
+    padding: 6px 8px;
+  }
 `;
 
 export const mobileButton = css`
