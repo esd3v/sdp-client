@@ -102,9 +102,12 @@ export const Main: FunctionComponent = () => {
 
   // topics loaded via button with different appID
   useEffect(() => {
-    if (Number(appID) && (appID !== prevAppID)) {
+    if (appID && (appID !== prevAppID)) {
       loadTopics(1);
+
+      if (Number(appID)) {
       appHasChanged = true;
+    }
     }
   }, [appID, prevAppID, loadTopics]);
 
