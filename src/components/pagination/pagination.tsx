@@ -54,7 +54,7 @@ export const Pagination: React.FunctionComponent = () => {
           </Button>
           <select
             className={styles.select}
-            value={getCurrentPage()}
+            value={getCurrentPage() || 0}
             onChange={switchPageMobileSelect}
           >
             {
