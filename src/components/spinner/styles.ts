@@ -55,6 +55,7 @@ export const SpinnerStyled = styled(Spinner)((props: Props) => `
   align-items: center;
   justify-content: center;
   min-height: 96px;
+  border-radius: ${variables.borderRadius};
   ${props.full ? full : basic};
   & .spinner {
     display: flex;

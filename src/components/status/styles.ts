@@ -14,4 +14,5 @@ export const StatusStyled = styled(Status)((props: Props) => `
   background-color: #fff;
   margin-bottom: 16px;
   word-break: break-word;
+  border-radius: ${variables.borderRadius};
 `);

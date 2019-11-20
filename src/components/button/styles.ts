@@ -10,6 +10,7 @@ export const button = css`
   background-color: ${variables.dodgerBlue};
   box-shadow: ${variables.shadow};
   min-width: 64px;
+  border-radius: ${variables.borderRadius};
   &:hover:enabled  {
     background-color: ${lighten(amount, variables.dodgerBlue)};
   }

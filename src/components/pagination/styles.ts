@@ -22,7 +22,7 @@ export const pageLink = css`
   width: 32px;
   height: 100%;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: ${variables.borderRadius};
   display: inline-flex;
   align-items: center;
   justify-content: center;

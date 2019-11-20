@@ -4,8 +4,6 @@ import * as variables from 'styles/variables';
 import {mq} from 'styles/mediaQueries';
 
 export const topicItem = css`
-  /* display: flex; */
-  /* align-items: center; */
   padding: 12px;
   background-color: #fff;
   &:hover {
@@ -13,6 +11,12 @@ export const topicItem = css`
   }
   &:not(:last-of-type) {
     border-bottom: 1px solid #d4d4d4;
+  }
+  &:first-child {
+    border-radius: ${variables.borderRadius} ${variables.borderRadius} 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 ${variables.borderRadius} ${variables.borderRadius};
   }
 `;
 

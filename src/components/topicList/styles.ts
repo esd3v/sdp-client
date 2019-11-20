@@ -3,5 +3,6 @@ import * as variables from 'styles/variables';
 
 export const topicList = css`
   box-shadow: ${variables.shadow};
+  border-radius: ${variables.borderRadius};
   position: relative;
 `;

@@ -14,6 +14,7 @@ export const searchBar = css`
   input {
     padding: 12px 8px;
     width: 100%;
+    border-radius: ${variables.borderRadius};
   }
   button {
     min-height: 36px;
