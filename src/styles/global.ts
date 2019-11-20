@@ -21,6 +21,10 @@ injectGlobal`
     border: 0;
     outline: 0;
   }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
   button, input, select, textarea {
     font-family: inherit;
     font-size: 100%;

@@ -11,7 +11,7 @@ export const container = css`
   display: flex;
   justify-content: space-between;
   padding: 0;
-  margin: 16px 0;
+  /* margin: 16px 0; */
 `;
 
 export const pageItem = css`

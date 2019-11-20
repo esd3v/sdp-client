@@ -6,14 +6,14 @@ export const searchBar = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 13px;
-  & > *:first-of-type {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
+  & > * {
     box-shadow: ${variables.shadow};
   }
   input {
-    padding: 12px 8px;
     width: 100%;
+    padding: 12px 8px;
+    margin-bottom: 16px;
     border-radius: ${variables.borderRadius};
   }
   button {

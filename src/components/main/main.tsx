@@ -106,8 +106,8 @@ export const Main: FunctionComponent = () => {
       loadTopics(1);
 
       if (Number(appID)) {
-      appHasChanged = true;
-    }
+        appHasChanged = true;
+      }
     }
   }, [appID, prevAppID, loadTopics]);
 

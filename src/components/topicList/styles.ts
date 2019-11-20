@@ -5,4 +5,6 @@ export const topicList = css`
   box-shadow: ${variables.shadow};
   border-radius: ${variables.borderRadius};
   position: relative;
+  background-color: #fff;
+  margin-bottom: 16px;
 `;
