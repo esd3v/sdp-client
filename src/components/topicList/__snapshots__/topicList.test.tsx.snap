@@ -24,6 +24,14 @@ exports[`renders correctly 1`] = `
   border-bottom: 1px solid #d4d4d4;
 }
 
+.emotion-9:first-child {
+  border-radius: 3px 3px 0 0;
+}
+
+.emotion-9:last-child {
+  border-radius: 0 0 3px 3px;
+}
+
 .emotion-2 {
   overflow: hidden;
   white-space: nowrap;
@@ -111,8 +119,11 @@ exports[`renders correctly 1`] = `
 }
 
 .emotion-10 {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.24),0 1px 2px rgba(0,0,0,0.36);
+  border-radius: 3px;
   position: relative;
+  background-color: #fff;
+  margin-bottom: 16px;
 }
 
 <div

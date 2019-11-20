@@ -10,8 +10,11 @@ exports[`renders correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 1px;
-  margin-top: 16px;
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.24),0 1px 2px rgba(0,0,0,0.36);
+  border-radius: 3px;
+  margin-bottom: 16px;
 }
 
 .emotion-0 .label {
