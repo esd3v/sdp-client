@@ -1,23 +1,3 @@
-interface AppState {
-  global: {
-    loading: boolean;
-    status: {
-      type: 'normal' | 'error' | 'success';
-      message: string;
-    };
-  };
-  parser: {
-    topics: Topic[];
-    topicTotal: number;
-    perPage: PerPage;
-    pageTotal: number;
-  };
-}
-
-// Core
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
 type AppStateChanges<R extends keyof AppState> = {
   [key in keyof AppState[R]]?: AppState[R][key];
 };
