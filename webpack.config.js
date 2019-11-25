@@ -35,6 +35,10 @@ module.exports = {
         sideEffects: false,
       },
       {
+        test: /\.css$/,
+        sideEffects: true,
+      },
+      {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
@@ -51,7 +55,7 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
