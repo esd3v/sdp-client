@@ -145,7 +145,7 @@ exports[`renders correctly 1`] = `
       
     </div>
     <div>
-      01.01.1970 @ 07:00
+      0
     </div>
     <span
       className="emotion-5 emotion-6 emotion-7"

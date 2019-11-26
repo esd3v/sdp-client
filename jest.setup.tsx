@@ -5,3 +5,5 @@ expect.addSnapshotSerializer(serializer);
 
 jest.mock('react-responsive', () =>
   props => <div>{props.children}</div>);
+
+jest.mock('dayjs', () => () => ({format: () => '0'}));
