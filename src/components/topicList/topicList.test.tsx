@@ -5,17 +5,19 @@ import {withStore} from 'jestHelpers';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(withStore(() => <TopicList topics={[{
-      pinned: false,
-      locked: false,
-      answered: false,
-      title: '',
-      author: '',
-      timestamp: 0,
-      replyCount: 0,
-      tooltip: '',
-      url: '',
-    }]}/>))
+    .create(withStore({
+      component: <TopicList topics={[{
+        pinned: false,
+        locked: false,
+        answered: false,
+        title: '',
+        author: '',
+        timestamp: 0,
+        replyCount: 0,
+        tooltip: '',
+        url: '',
+      }]}/>,
+    }))
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

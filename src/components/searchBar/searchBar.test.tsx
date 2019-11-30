@@ -5,7 +5,9 @@ import {withStoreRouter} from 'jestHelpers';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(withStoreRouter(() => <SearchBar onSubmit={() => {}}/>))
+    .create(withStoreRouter({
+      component: <SearchBar onSubmit={() => {}}/>,
+    }))
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

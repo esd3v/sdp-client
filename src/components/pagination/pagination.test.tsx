@@ -5,7 +5,9 @@ import {withStoreRouter} from 'jestHelpers';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(withStoreRouter(() => <Pagination onSwitch={() => {}}/>))
+    .create(withStoreRouter({
+      component: <Pagination onSwitch={() => {}}/>,
+    }))
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
