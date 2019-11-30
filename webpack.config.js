@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const DIR_SRC = path.resolve(__dirname, './src');
-const DIR_BUILD = path.resolve(__dirname, './dist');
+const DIR_BUILD = path.resolve(__dirname, './public');
 
 module.exports = {
   context: DIR_SRC,

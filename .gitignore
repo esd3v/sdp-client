@@ -3,4 +3,5 @@ node_modules/
 .directory
 sh.exe.stackdump
 dist
+public
 *.http
