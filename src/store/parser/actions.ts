@@ -1,12 +1,12 @@
 import {createAction} from 'reduxHelpers';
 
-export const setPerPage = (payload: PerPage) =>
+export const setAppID = (payload: number) =>
   createAction({
     reducer: 'parser',
-    type: 'SET_PERPAGE',
+    type: 'SET_APPID',
     payload,
     changer: ({payload}) => ({
-      perPage: payload,
+      appID: payload,
     }),
   });
 

@@ -1,3 +1,3 @@
 export interface Props {
-  disabled?: boolean;
+  onChange: (value: PerPage) => void;
 }

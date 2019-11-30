@@ -9,12 +9,12 @@ import {ErrorBoundary} from 'components/errorBoundary';
 require('./styles/global');
 require('./styles/fonts');
 
-const customHistory = createBrowserHistory();
+const history = createBrowserHistory();
 
 render(
   (
     <Provider store={store}>
-      <Router history={customHistory}>
+      <Router history={history}>
         <ErrorBoundary>
           <Root/>
         </ErrorBoundary>

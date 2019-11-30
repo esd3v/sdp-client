@@ -3,23 +3,14 @@ import React, {
   FunctionComponent,
   useEffect,
 } from 'react';
-import {useParams, useHistory} from 'react-router';
-import {useSelector} from 'react-redux';
+import {useParams} from 'react-router';
 import {Button} from 'components/button';
-import {usePrevious} from 'hooks';
+import {Props} from './types';
 import * as styles from './styles';
 
-export const SearchBar: FunctionComponent = () => {
-  const history = useHistory();
+export const SearchBar: FunctionComponent<Props> = ({onSubmit}) => {
   const {appID} = useParams();
-
-  const isLoading = useSelector((state: AppState) => state.global.loading);
-
   const [value, setValue] = useState('');
-  const prevValue = usePrevious(value);
-
-  const isButtonDisabled = () =>
-    !value || isLoading;
 
   const handleChange = e => {
     setValue(e.target.value);
@@ -28,16 +19,16 @@ export const SearchBar: FunctionComponent = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if (value && (value !== appID)) {
-      history.replace(`/app/${value}`);
+    if (value) {
+      onSubmit(value);
     }
   };
 
   useEffect(() => {
-    if (appID && Number(appID) && !value && !prevValue) {
+    if (appID) {
       setValue(appID);
     }
-  }, [appID, value, prevValue]);
+  }, [appID]);
 
   return (
     <>
@@ -45,14 +36,9 @@ export const SearchBar: FunctionComponent = () => {
         <input
           onChange={handleChange}
           value={value}
-          disabled={isLoading}
           placeholder="ID of Steam application (e.g. 881100)"
         />
-        <Button
-          type="submit"
-          disabled={isButtonDisabled()}
-        >Parse
-        </Button>
+        <Button type="submit">Parse</Button>
       </form>
     </>
   );

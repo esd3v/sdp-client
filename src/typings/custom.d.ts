@@ -1,24 +1,9 @@
-interface Thunks {
-  loadTopics: Thunk<HTTPParams['loadTopics']>;
-}
-
-interface HTTPParams {
-  loadTopics: {
-    appID: number;
-    page: number;
-    perPage: PerPage;
-  };
-}
-
-interface HTTPRequest {
-  loadTopics: HTTPGet<HTTPParams['loadTopics'], {
-    topics: Topic[];
-    topicTotal: number;
-    pageTotal: number;
-  }>;
-}
-
 type PerPage = 15 | 30 | 50;
+
+interface Status {
+  type: 'normal' | 'error' | 'success';
+  message: string;
+}
 
 interface Topic {
   pinned: boolean;

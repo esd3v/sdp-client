@@ -1,10 +1,10 @@
+import React from 'react';
 import {PerPage} from './';
 import renderer from 'react-test-renderer';
-import {withStore} from 'jestHelpers';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(withStore(PerPage))
+    .create(<PerPage onChange={() => {}}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

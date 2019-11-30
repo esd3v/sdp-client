@@ -75,14 +75,12 @@ exports[`renders correctly 1`] = `
   onSubmit={[Function]}
 >
   <input
-    disabled={false}
     onChange={[Function]}
     placeholder="ID of Steam application (e.g. 881100)"
     value=""
   />
   <button
     className="emotion-0"
-    disabled={true}
     type="submit"
   >
     Parse

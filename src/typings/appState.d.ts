@@ -1,15 +1,12 @@
 interface AppState {
   global: {
     loading: boolean;
-    status: {
-      type: 'normal' | 'error' | 'success';
-      message: string;
-    };
+    status: Status;
   };
   parser: {
+    appID: number;
     topics: Topic[];
     topicTotal: number;
-    perPage: PerPage;
     pageTotal: number;
   };
 }

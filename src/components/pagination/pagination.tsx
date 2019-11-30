@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import {useSelector} from 'react-redux';
-import {useParams, useHistory} from 'react-router';
+import {useParams} from 'react-router';
 import {Button} from 'components/button';
 import {Responsive} from 'components/responsive';
+import {Props} from './types';
 import * as styles from './styles';
 
-export const Pagination: React.FunctionComponent = () => {
+export const Pagination: React.FunctionComponent<Props> = ({onSwitch}) => {
 
-  const history = useHistory();
-  const {appID, page} = useParams();
+  const {page} = useParams();
   const pageTotal = useSelector((state: AppState) => state.parser.pageTotal);
 
   const getCurrentPage = () => Number(page);
@@ -31,7 +31,7 @@ export const Pagination: React.FunctionComponent = () => {
       getCurrentPage();
 
   const switchPage = (page: number) =>
-    history.push(`/app/${appID}/page/${page}`);
+    onSwitch(page);
 
   const switchPageDesktop = ({selected}) =>
     switchPage(selected + 1);
