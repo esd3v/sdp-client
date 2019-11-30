@@ -6,8 +6,9 @@ import React, {
 } from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {actions} from 'store/actions';
+import * as config from 'config';
 import * as thunks from 'store/thunks';
+import {actions} from 'store/actions';
 import * as statuses from 'services/statuses';
 import {Spinner} from 'components/spinner';
 import {Status} from 'components/status';
@@ -15,10 +16,9 @@ import {PerPage} from 'components/perPage';
 import {SearchBar} from 'components/searchBar';
 import {TopicList} from 'components/topicList';
 import {Pagination} from 'components/pagination';
-import {calculatePageCount} from 'misc';
+import {calculatePageCount} from 'helpers/misc';
 import * as styles from './styles';
-import * as config from '../../config';
-import {usePrevious} from '../../hooks';
+import {usePrevious} from 'helpers/hooks';
 
 let socket: WebSocket;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {TopicList} from './';
 import renderer from 'react-test-renderer';
-import {withStore} from 'jestHelpers';
+import {withStore} from 'helpers/react';
 
 test('renders correctly', () => {
   const tree = renderer

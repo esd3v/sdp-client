@@ -1,4 +1,4 @@
-import {createAction} from 'reduxHelpers';
+import {createAction} from 'helpers/redux';
 
 export const setAppID = (payload: number) =>
   createAction({

@@ -7,7 +7,7 @@ import {
 } from 'redux';
 import {reducer as globalReducer} from './global/reducer';
 import {reducer as parserReducer} from './parser/reducer';
-import {combineReducers} from 'reduxHelpers';
+import {combineReducers} from 'helpers/redux';
 
 const rootReducer = combineReducers({
   global: globalReducer,

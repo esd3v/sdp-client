@@ -1,4 +1,4 @@
-import {createAppStateModule} from 'reduxHelpers';
+import {createAppStateModule} from 'helpers/redux';
 
 export const state = createAppStateModule('global', {
   loading: false,
