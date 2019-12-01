@@ -36,7 +36,7 @@ export const SearchBar: FunctionComponent<Props> = ({onSubmit}) => {
         <input
           onChange={handleChange}
           value={value}
-          placeholder="ID of Steam application (e.g. 881100)"
+          placeholder="ID of Steam application (e.g. 323190)"
         />
         <Button type="submit">Parse</Button>
       </form>
