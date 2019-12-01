@@ -10,6 +10,7 @@ const padding = '16px';
 const basic = `
   box-shadow: ${variables.shadow};
   background-color: #fff;
+  min-height: 96px;
 `;
 
 const full = `
@@ -54,7 +55,6 @@ export const SpinnerStyled = styled(Spinner)((props: Props) => `
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 96px;
   border-radius: ${variables.borderRadius};
   margin-bottom: 16px;
   ${props.full ? full : basic};
