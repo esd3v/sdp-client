@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const DotenvFlow = require('dotenv-flow-webpack');
 
 const DIR_SRC = path.resolve(__dirname, './src');
 const DIR_BUILD = path.resolve(__dirname, './public');
@@ -97,5 +98,6 @@ module.exports = {
     new ProgressBarPlugin({
       format: '[:bar]',
     }),
+    new DotenvFlow(),
   ],
 };

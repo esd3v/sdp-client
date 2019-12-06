@@ -5,3 +5,5 @@ sh.exe.stackdump
 dist
 public
 *.http
+.env.local
+.env.*.local

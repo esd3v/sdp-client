@@ -23,7 +23,7 @@ import {usePrevious} from 'helpers/hooks';
 let socket: WebSocket;
 
 const wsConnect = () =>
-  socket = new WebSocket(config.API_WS_ENDPOINT);
+  socket = new WebSocket(config.API_ENDPOINT_WS);
 
 wsConnect();
 

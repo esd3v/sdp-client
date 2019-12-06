@@ -2,7 +2,7 @@ import * as http from './http';
 import * as config from 'config';
 
 const httpClient = http.createHttpClient({
-  host: config.API_ENDPOINT,
+  host: config.API_ENDPOINT_HTTP,
   timeout: config.API_TIMEOUT,
 });
 
