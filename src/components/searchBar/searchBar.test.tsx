@@ -6,7 +6,7 @@ import {withStoreRouter} from 'helpers/react';
 test('renders correctly', () => {
   const tree = renderer
     .create(withStoreRouter({
-      component: <SearchBar onSubmit={() => {}}/>,
+      component: <SearchBar onSubmit={() => 0}/>,
     }))
     .toJSON();
   expect(tree).toMatchSnapshot();

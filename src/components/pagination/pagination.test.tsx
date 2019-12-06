@@ -6,7 +6,7 @@ import {withStoreRouter} from 'helpers/react';
 test('renders correctly', () => {
   const tree = renderer
     .create(withStoreRouter({
-      component: <Pagination onSwitch={() => {}}/>,
+      component: <Pagination onSwitch={() => 0}/>,
     }))
     .toJSON();
   expect(tree).toMatchSnapshot();

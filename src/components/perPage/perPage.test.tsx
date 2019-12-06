@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(<PerPage onChange={() => {}}/>)
+    .create(<PerPage onChange={() => 0}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
