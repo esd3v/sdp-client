@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
+import {Helmet} from 'react-helmet';
 import * as config from 'config';
 import * as thunks from 'store/thunks';
 import {actions} from 'store/actions';
@@ -157,6 +158,11 @@ export const Main: FunctionComponent = () => {
 
   return (
     <div className={styles.main}>
+      <Helmet>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+      </Helmet>
       <SearchBar onSubmit={handleSubmit}/>
       {
         status.message &&
