@@ -37,6 +37,7 @@ export const Main: FunctionComponent = () => {
   } = useParams();
 
   const appID = useSelector((state: AppState) => state.parser.appID);
+  const appTitle = useSelector((state: AppState) => state.parser.appTitle);
   const loading = useSelector((state: AppState) => state.global.loading);
   const status = useSelector((state: AppState) => state.global.status);
   const topics = useSelector((state: AppState) => state.parser.topics);
@@ -162,6 +163,7 @@ export const Main: FunctionComponent = () => {
         <meta charSet="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content=""/>
+        <title>{`${`${appTitle && `${appTitle} - `}`}Steam Discussion Parser`}</title>
       </Helmet>
       <SearchBar onSubmit={handleSubmit}/>
       {

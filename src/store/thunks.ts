@@ -8,7 +8,6 @@ export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, 
 
     if (!loading) {
       dispatch(actions.global.setLoading(true));
-      dispatch(actions.global.setStatus(statuses.empty));
 
       const [error, result] = await api.loadTopics({appID, page, perPage});
 
@@ -16,7 +15,7 @@ export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, 
         if (error.response) {
           dispatch(actions.global
             .setStatus(statuses
-              .createCustomError(error.response.data.message)));
+              .createErrorStatus(error.response.data.message)));
         } else {
           dispatch(actions.global.setStatus(statuses.couldntConnectToTheServer));
         }
@@ -24,10 +23,12 @@ export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, 
         dispatch(actions.global.setLoading(false));
       } else {
         dispatch(actions.parser.setAppID(appID));
+        dispatch(actions.parser.setAppTitle(result.data.appTitle));
         dispatch(actions.parser.setTopics(result.data.topics));
         dispatch(actions.parser.setPageTotal(result.data.pageTotal));
         dispatch(actions.parser.setTopicTotal(result.data.topicTotal));
         dispatch(actions.global.setLoading(false));
+        dispatch(actions.global.setStatus(statuses.createNormalStatus(result.data.appTitle)));
       }
     }
   };

@@ -1,9 +1,15 @@
 const createStatus = (params: Status) => params;
 
-export const createCustomError = (message: string) =>
+export const createErrorStatus = (message: string) =>
   createStatus({
     message,
     type: 'error',
+  });
+
+export const createNormalStatus = (message: string) =>
+  createStatus({
+    message,
+    type: 'normal',
   });
 
 export const empty = createStatus({

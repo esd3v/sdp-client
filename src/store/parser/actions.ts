@@ -10,6 +10,16 @@ export const setAppID = (payload: number) =>
     }),
   });
 
+export const setAppTitle = (payload: string) =>
+  createAction({
+    reducer: 'parser',
+    type: 'SET_APPTITLE',
+    payload,
+    changer: ({payload}) => ({
+      appTitle: payload,
+    }),
+  });
+
 export const setTopics = (payload: Topic[]) =>
   createAction({
     reducer: 'parser',
