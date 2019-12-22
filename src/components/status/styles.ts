@@ -9,7 +9,13 @@ export const StatusStyled = styled(Status)((props: Props) => `
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: ${(props.type === 'error') ? 'red' : 'inherit'};
+  color: ${(() => {
+    switch (props.type) {
+      case 'error': return 'red';
+      case 'success': return 'green';
+      default: return 'inherit';
+    }
+  })()};
   box-shadow: ${variables.shadow};
   background-color: #fff;
   margin-bottom: 16px;
