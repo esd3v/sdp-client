@@ -8,6 +8,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {Helmet} from 'react-helmet';
 import * as config from 'config';
+import * as webSocket from 'webSocket';
 import * as thunks from 'store/thunks';
 import {actions} from 'store/actions';
 import * as statuses from 'services/statuses';
@@ -20,13 +21,7 @@ import {Pagination} from 'components/pagination';
 import {calculatePageCount} from 'helpers/misc';
 import * as styles from './styles';
 import {usePrevious} from 'helpers/hooks';
-
-let socket: WebSocket;
-
-const wsConnect = () =>
-  socket = new WebSocket(config.API_ENDPOINT_WS);
-
-wsConnect();
+import {sessionID} from 'services/wsMessages';
 
 export const Main: FunctionComponent = () => {
   const history = useHistory();
@@ -66,10 +61,6 @@ export const Main: FunctionComponent = () => {
     const parsedAppID = Number(params.appID);
     const parsedPage = Number(params.page);
 
-    if (socket.readyState === 3) {
-      wsConnect();
-    }
-
     if (!parsedAppID) {
       setStatus(statuses.appIDIsNotAnInteger);
     } else if (!parsedPage) {
@@ -83,12 +74,26 @@ export const Main: FunctionComponent = () => {
     }
   }, [dispatch, setStatus]);
 
-  socket.onopen = () =>
-    socket.onmessage = event =>
-      setStatus({
+  if (!webSocket.getSocket()) {
+    webSocket.createSocket(config.API_ENDPOINT_WS, {
+      reconnect: 5,
+      keepAlive: 30,
+      onClose: () => setStatus(statuses.websocketHasBeenLost),
+      onOpen: ws => {
+        setStatus(statuses.websocketHasBeenOpened);
+        ws.send(sessionID(sessionStorage.getItem('sessionID') || ''));
+      },
+      onReconnect: ws => {
+        setStatus(statuses.websocketHasBeenRestored),
+        ws.send(sessionID(sessionStorage.getItem('sessionID') || ''));
+      },
+      onFail: () => setStatus(statuses.websocketUnableToConnect),
+      onMessage: event => setStatus({
         message: event.data,
         type: 'normal',
-      });
+      }),
+    });
+  }
 
   const handleSubmit = (appID: string) =>
     loadTopics({

@@ -9,6 +9,9 @@ const httpClient = http.createHttpClient({
 const loadTopicsRequest = httpClient({
   path: '/',
   method: 'get',
+  headers: {
+    'x-session-id': sessionStorage.getItem('sessionID'),
+  },
 });
 
 export const loadTopics = (params: {
