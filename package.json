@@ -22,6 +22,7 @@
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.23",
     "axios": "0.19.0",
+    "crypto-random-string": "3.0.1",
     "dayjs": "1.8.17",
     "emotion": "10.0.23",
     "history": "4.10.1",
