@@ -41,3 +41,6 @@ export const websocketHasBeenRestored =
 
 export const websocketUnableToConnect =
   createErrorStatus('Unable to connect to WebSocket server.');
+
+export const appHasBeenParsed = (id: number) =>
+  createNormalStatus(`App ${id} has been successfully parsed.`);

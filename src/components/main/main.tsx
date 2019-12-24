@@ -170,6 +170,7 @@ export const Main: FunctionComponent = () => {
         <meta name="description" content=""/>
         <title>{`${`${appTitle && `${appTitle} - `}`}Steam Discussion Parser`}</title>
       </Helmet>
+      <Status message={`${appTitle || `Steam Discussion Parser`}`}/>
       <SearchBar onSubmit={handleSubmit}/>
       {
         status.message &&

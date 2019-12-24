@@ -28,7 +28,7 @@ export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, 
         dispatch(actions.parser.setPageTotal(result.data.pageTotal));
         dispatch(actions.parser.setTopicTotal(result.data.topicTotal));
         dispatch(actions.global.setLoading(false));
-        dispatch(actions.global.setStatus(statuses.createNormalStatus(result.data.appTitle)));
+        dispatch(actions.global.setStatus(statuses.appHasBeenParsed(appID)));
       }
     }
   };
