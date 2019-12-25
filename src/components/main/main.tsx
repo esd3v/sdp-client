@@ -98,7 +98,7 @@ export const Main: FunctionComponent = () => {
   const handleSubmit = (appID: string) =>
     loadTopics({
       appID,
-      page: Number(routePage) || 1,
+      page,
       perPage,
     });
 
@@ -113,15 +113,9 @@ export const Main: FunctionComponent = () => {
     if (routeAppID) {
       if (perPage === prevPerPage) {
         if (!topics.length) {
-          loadTopics({
-            appID: routeAppID,
-            page: routePage || 1,
-            perPage,
-          });
+          setPage(Number(routePage) || 1);
         }
       }
-    } else {
-      history.replace('/');
     }
   }, [routeAppID, routePage, perPage, prevPerPage, topics, history, loadTopics]);
 
@@ -132,16 +126,16 @@ export const Main: FunctionComponent = () => {
   }, [topics, prevTopics, appID, history, page]);
 
   useEffect(() => {
-    if (appID !== prevAppID) {
+    if (topics.length && (appID !== prevAppID)) {
       setPage(1);
     }
   }, [topics, prevTopics, appID, history, prevAppID]);
 
   useEffect(() => {
-    if (page !== prevPage) {
+    if (topics.length && (page !== prevPage)) {
       loadTopics({appID, page, perPage});
     }
-  }, [appID, page, prevPage, perPage, loadTopics]);
+  }, [appID, page, prevPage, perPage, topics, loadTopics]);
 
   useEffect(() => {
     if (appID && (perPage !== prevPerPage)) {
