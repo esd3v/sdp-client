@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const DotenvFlow = require('dotenv-flow-webpack');
 
@@ -102,6 +103,13 @@ module.exports = (env, argv) => {
       new DotenvFlow({
         // eslint-disable-next-line @typescript-eslint/camelcase
         node_env: argv.mode,
+      }),
+      new FaviconsWebpackPlugin({
+        logo: `assets/images/favicon.png`,
+        favicons: {
+          background: '#fff',
+          appName: 'Steam Discussion Parser',
+        },
       }),
     ],
   };
