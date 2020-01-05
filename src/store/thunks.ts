@@ -9,7 +9,10 @@ export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, 
     if (!loading) {
       dispatch(actions.global.setLoading(true));
 
-      const [error, result] = await api.loadTopics({appID, page, perPage});
+      const [error, result] = await api.loadTopics(
+        sessionStorage.getItem('sessionID'),
+        {appID, page, perPage},
+      );
 
       if (error) {
         if (error.response) {
