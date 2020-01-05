@@ -88,10 +88,16 @@ export const Main: FunctionComponent = () => {
         ws.send(sessionID(sessionStorage.getItem('sessionID') || ''));
       },
       onFail: () => setStatus(statuses.websocketUnableToConnect),
-      onMessage: event => setStatus({
-        message: event.data,
-        type: 'normal',
-      }),
+      onMessage: event => {
+        const {type, message} = JSON.parse(event.data);
+
+        if (type === 'progress') {
+          setStatus({
+            message,
+            type: 'normal',
+          });
+        }
+      },
     });
   }
 
