@@ -36,6 +36,9 @@ export const websocketHasBeenLost =
 export const websocketHasBeenOpened =
   createNormalStatus('WebSocket connection has been opened.');
 
+export const websocketConnecting =
+  createNormalStatus('Connecting to WebSocket server...');
+
 export const websocketHasBeenRestored =
   createSuccessStatus('WebSocket connection has been restored.');
 

@@ -75,6 +75,8 @@ export const Main: FunctionComponent = () => {
   }, [dispatch, setStatus]);
 
   if (!webSocket.getSocket()) {
+    setStatus(statuses.websocketConnecting);
+
     webSocket.createSocket(config.API_ENDPOINT_WS, {
       reconnect: 5,
       keepAlive: 30,
