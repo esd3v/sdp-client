@@ -193,7 +193,7 @@ export const Main: FunctionComponent = () => {
         </TopicList>
       }
       {ConditionalPagination}
-      <PerPage onChange={handlePerPageChange}/>
+      <PerPage value={perPage} onChange={handlePerPageChange}/>
     </div>
   );
 };
