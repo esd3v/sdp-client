@@ -2,7 +2,11 @@ import * as api from 'services/api';
 import * as statuses from 'services/statuses';
 import {actions} from 'store/actions';
 
-export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, page, perPage}) =>
+export const loadTopics: Thunk<Parameters<typeof api.loadTopics>[0]> = ({appID, page, perPage}: {
+  appID: number;
+  page: number;
+  perPage: PerPage;
+}) =>
   async (dispatch, getState) => {
     const {global: {loading}} = getState();
 

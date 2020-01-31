@@ -53,27 +53,6 @@ export const Main: FunctionComponent = () => {
       type,
     })), [dispatch]);
 
-  const loadTopics = useCallback((params: {
-    appID;
-    page;
-    perPage;
-  }) => {
-    const parsedAppID = Number(params.appID);
-    const parsedPage = Number(params.page);
-
-    if (!parsedAppID) {
-      setStatus(statuses.appIDIsNotAnInteger);
-    } else if (!parsedPage) {
-      setStatus(statuses.pageIsNotAnInteger);
-    } else {
-      dispatch(thunks.loadTopics({
-        appID: parsedAppID,
-        page: parsedPage,
-        perPage: params.perPage,
-      }));
-    }
-  }, [dispatch, setStatus]);
-
   if (!webSocket.getSocket()) {
     setStatus(statuses.websocketConnecting);
 
@@ -103,12 +82,21 @@ export const Main: FunctionComponent = () => {
     });
   }
 
-  const handleSubmit = (appID: string) =>
-    loadTopics({
-      appID,
-      page,
-      perPage,
-    });
+  const handleSubmit = (value: string) => {
+    const newAppID = Number(value);
+
+    if (!newAppID) {
+      setStatus(statuses.appIDIsNotAnInteger);
+    } else {
+      const newPage = (newAppID === appID) ? page : 1;
+
+      dispatch(thunks.loadTopics({
+        appID: newAppID,
+        page: newPage,
+        perPage,
+      }));
+    }
+  };
 
   const handlePageChange = (page: number) =>
     setPage(page);
@@ -125,7 +113,7 @@ export const Main: FunctionComponent = () => {
         }
       }
     }
-  }, [routeAppID, routePage, perPage, prevPerPage, topics, history, loadTopics]);
+  }, [routeAppID, routePage, perPage, prevPerPage, topics]);
 
   useEffect(() => {
     if (topics !== prevTopics) {
@@ -141,9 +129,9 @@ export const Main: FunctionComponent = () => {
 
   useEffect(() => {
     if (topics.length && (page !== prevPage)) {
-      loadTopics({appID, page, perPage});
+      dispatch(thunks.loadTopics({appID, page, perPage}));
     }
-  }, [appID, page, prevPage, perPage, topics, loadTopics]);
+  }, [appID, page, prevPage, perPage, topics, dispatch]);
 
   useEffect(() => {
     if (appID && (perPage !== prevPerPage)) {
@@ -156,10 +144,10 @@ export const Main: FunctionComponent = () => {
       if (page > predictedPageCount) {
         setPage(predictedPageCount);
       } else {
-        loadTopics({appID, page, perPage});
+        dispatch(thunks.loadTopics({appID, page, perPage}));
       }
     }
-  }, [perPage, prevPerPage, appID, page, topicTotal, loadTopics]);
+  }, [perPage, prevPerPage, appID, page, topicTotal, dispatch]);
 
   const ConditionalPagination =
     (pageTotal > 0) && <Pagination onSwitch={handlePageChange}/>;
